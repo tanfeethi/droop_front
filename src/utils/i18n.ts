@@ -11,7 +11,8 @@ const resources = {
   },
 } as const;
 
-const lang = localStorage.getItem("lang") || "en";
+// ✅ Default language set to Arabic
+const lang = localStorage.getItem("lang") || "ar";
 
 // Set html attributes initially
 document.documentElement.lang = lang;
@@ -20,7 +21,7 @@ document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 i18n.use(initReactI18next).init({
   resources,
   lng: lang,
-  fallbackLng: "en",
+  fallbackLng: "ar", // ✅ fallback to Arabic if no match
   interpolation: { escapeValue: false },
 });
 

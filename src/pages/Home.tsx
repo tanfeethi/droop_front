@@ -1,8 +1,31 @@
+import HeroCarousel from "../components/reuse/Carousel/HeroCarousel";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <HeroCarousel />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </>
+  );
+};
 
-export default Home
+export default Home;
