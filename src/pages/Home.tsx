@@ -6,7 +6,6 @@ import SectionWithButtons from "../components/reuse/SectionWithButtons";
 import BackgroundCard from "../components/reuse/Card/BackgroundCard";
 import CustomServiceSlider from "../components/once/CustomServiceSlider";
 import ContactForm from "../components/once/ContactForm";
-import NumberDisplay from "../components/once/Number";
 
 const Home = () => {
   return (
@@ -124,7 +123,12 @@ const Home = () => {
         </div>
 
         <div className="bg-[#00103B] py-20 md:w-[60%]">
-          <ContactForm />
+          <WrapperContainer>
+            <ContactForm
+              buttonExtraClasses="text-[24px] gap-4 justify-center"
+              buttonWidth="w-full"
+            />
+          </WrapperContainer>
         </div>
       </section>
     </>

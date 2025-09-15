@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-4">
           <NavLink to="/contact-us">
-            <button className="px-5 py-2 bg-[#274185] text-white text-xl rounded-full flex items-center gap-3">
+            <button className="px-5 py-2 bg-[#274185] text-white text-xl rounded-full flex items-center gap-3 cursor-pointer">
               <FaRegDotCircle />
               تواصل معنا
             </button>

@@ -7,6 +7,7 @@ import Corporate_consulting from "../pages/Corporate_consulting";
 import Services from "../pages/Services";
 import Programs from "../pages/Programs";
 import ErrorPage from "../pages/ErrorPage";
+import ContactUs from "../pages/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "programs",
         element: <Programs />,
+      },
+      {
+        path: "contact-us",
+        element: <ContactUs />,
       },
     ],
   },

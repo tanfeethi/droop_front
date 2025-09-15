@@ -16,10 +16,10 @@ type CarouselProps = {
 };
 
 const carouselData: CarouselProps[] = [
-  { id: 1, title: "Title 1", description: "Description 1", image: im1 },
-  { id: 2, title: "Title 2", description: "Description 2", image: im2 },
-  { id: 3, title: "Title 3", description: "Description 3", image: im3 },
-  { id: 4, title: "Title 4", description: "Description 4", image: im4 },
+  { id: 1, title: "عنوان رقم 1", description: "وصف رقم 1", image: im1 },
+  { id: 2, title: "عنوان رقم 2", description: "وصف رقم 2", image: im2 },
+  { id: 3, title: "عنوان رقم 3", description: "وصف رقم 3", image: im3 },
+  { id: 4, title: "عنوان رقم 4", description: "وصف رقم 4", image: im4 },
 ];
 
 const HeroCarousel = () => {
