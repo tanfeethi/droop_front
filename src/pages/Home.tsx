@@ -1,11 +1,12 @@
 import HeroCarousel from "../components/reuse/Carousel/HeroCarousel";
 import WrapperContainer from "../components/reuse/WrapperContainer";
 import RoundedButtton from "../components/reuse/Buttons/RoundedButtton";
-import AboutRoundedComponent from "../components/reuse/AboutRoundedComponent";
 import SectionWithButtons from "../components/reuse/SectionWithButtons";
 import BackgroundCard from "../components/reuse/Card/BackgroundCard";
 import CustomServiceSlider from "../components/once/CustomServiceSlider";
 import ContactForm from "../components/once/ContactForm";
+import VissionMetionSection from "../components/reuse/vision_Metion/VissionMetionSection";
+import ImageCard from "../components/reuse/Card/ImageCard";
 
 const Home = () => {
   return (
@@ -20,27 +21,12 @@ const Home = () => {
             description="منصة رائدة ومتخصصة في تطوير الكفاءات البشرية وتقديم الحلول االستشارية المتقدمة. نسعى إلحداث فرق حقيقي في األداء المؤسسي والفردي، من خالل تقديم برامج تدريبية معتمدة واستشارات استراتيجية تتماشى مع التغيرات السريعة في بيئات العمل"
           />
 
-          <div
-            className="w-full h-80 mt-20 rounded-xl overflow-hidden bg-[url('/assets/images/imag1.jpg')]"
-            style={{ backgroundSize: "100% 100%" }}
+          <ImageCard
+            extraClassName="rounded-xl h-[400px]"
+            bgImage="/assets/images/imag1.jpg"
           />
 
-          <div className=" w-full mt-20 flex items-center">
-            <div className="  flex flex-col gap-14 md:w-[60%]">
-              <AboutRoundedComponent
-                title="رسالتنا"
-                content="نسعى لأن نكون الخيار األول في مجال التدريب واالستشارات على مستوى المملكة ، من خلال تقديم برامج متميزة تساهم في تطوير مهارات الافراد وتحقيق الكفاءة للمنشآت، مما يساهم في بناء مستقبل مهني واعد."
-              />
-              <AboutRoundedComponent
-                title="رؤيتنا"
-                content="حلولا تدريبية واستشارية مبتكرة وذات جودة عالية، تركز على تطوير قدرات الموارد البشرية وتعزيز الاداء المؤسسي. نسعى نقدم لدعم استراتيجيات التحول والنمو في مختلف القطاعات، بما يساعد الافراد و المؤسسات على التميز والنجاح في بيئة األعمال المتغيرة."
-              />
-            </div>
-
-            <div className="hidden w-[40%] md:flex">
-              <img src="/assets/images/image2.webp" className="w-full" alt="" />
-            </div>
-          </div>
+          <VissionMetionSection />
         </WrapperContainer>
       </section>
 

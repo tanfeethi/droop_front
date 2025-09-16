@@ -6,9 +6,9 @@ import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <div className=" bg-[#000616]">
+    <footer className=" bg-[#000616]">
       <div>
-        <footer className=" text-white pt-8 pb-4 relative overflow-hidden ">
+        <div className=" text-white pt-8 pb-4 relative overflow-hidden ">
           <div className=" px-4 relative z-10 container mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b-1 border-white/50">
               {/* Column 1: Logo and Contact Info */}
@@ -33,9 +33,9 @@ const Footer = () => {
                     </div>
 
                     <div data-aos="fade-up" className=" mt-5">
-                      <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                      <button className="text-xs md:text-sm text-gray-300 leading-relaxed cursor-pointer">
                         الشروط و الاحكام
-                      </p>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -164,9 +164,9 @@ const Footer = () => {
               <span>دروب المستقبل - جميع الحقوق محفوظة - © 2024</span>
             </div>
           </div>
-        </footer>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

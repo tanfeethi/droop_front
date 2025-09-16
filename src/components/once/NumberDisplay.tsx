@@ -5,6 +5,7 @@ interface NumberDisplayProps {
   size?: number; // font size in px
   strokeColor?: string;
   strokeWidth?: number;
+  extraClassName?: string;
 }
 
 const NumberDisplay: React.FC<NumberDisplayProps> = ({
@@ -12,6 +13,7 @@ const NumberDisplay: React.FC<NumberDisplayProps> = ({
   size = 100,
   strokeColor = "#1757FF", // default Tailwind blue-600
   strokeWidth = 2,
+  extraClassName = "",
 }) => {
   return (
     <svg
@@ -21,6 +23,7 @@ const NumberDisplay: React.FC<NumberDisplayProps> = ({
       xmlns="http://www.w3.org/2000/svg"
     >
       <text
+        className={`${extraClassName}`}
         x="50%"
         y="50%"
         dominantBaseline="middle"
