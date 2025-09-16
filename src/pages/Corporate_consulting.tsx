@@ -75,7 +75,7 @@ const Corporate_consulting = () => {
                       <motion.div
                         layoutId="highlight"
                         transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="absolute inset-0 border-r-4 border-r-[#274185] bg-gradient-to-r from-[#E4E7F2] to-[#F9FAFF] rounded-lg"
+                        className="absolute inset-0 border-r-4 border-r-[#274185] bg-gradient-to-r from-[#E4E7F2] to-[#F9FAFF] rounded-lg rounded-r-none"
                       />
                     )}
 

@@ -90,7 +90,7 @@ const Home = () => {
           <div className="md:w-[80%] m-auto">
             <RoundedButtton
               className="mb-10"
-              children={<span>تواصل معنا</span>}
+              children={<span className="px-5">تواصل معنا</span>}
               type="button"
             />
             <p className="text-lg font-normal text-[#000000] mb-26 md:w-[60%]">

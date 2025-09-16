@@ -159,7 +159,7 @@ const ContactForm = ({
               className={`flex-1 px-4 py-3 outline-none ${inputBg} text-gray-700 placeholder-gray-400 focus:bg-gray-50 transition-colors duration-200`}
             />
             <div className="border-r-2 border-gray-200">
-              <select className="h-full px-3 py-3 text-gray-700 text-sm bg-transparent hover:bg-gray-50 focus:bg-gray-50 outline-none cursor-pointer transition-colors duration-200 min-w-[100px]">
+              <select className="h-full px-3 py-3 text-gray-700 text-sm bg-white hover:bg-gray-50 focus:bg-gray-50 outline-none cursor-pointer transition-colors duration-200 min-w-[100px]">
                 <option className="text-gray-700 bg-white" value="+966">
                   🇸🇦 +966
                 </option>

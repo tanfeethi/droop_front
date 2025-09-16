@@ -33,7 +33,6 @@ const NumberDisplay: React.FC<NumberDisplayProps> = ({
         stroke={strokeColor}
         strokeWidth={strokeWidth}
         fill="transparent"
-        style={{ fontFamily: "Arial, sans-serif" }}
       >
         {number}
       </text>
