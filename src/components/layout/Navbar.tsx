@@ -122,9 +122,13 @@ const Navbar: React.FC = () => {
 
           <button
             onClick={toggleLanguage}
-            className="bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1"
+            className="group bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1 cursor-pointer"
           >
-            <TbRefresh className="bg-[#00103B] p-2 h-9 w-9 text-white rounded-full" />
+            <TbRefresh
+              className="bg-[#00103B] p-2 h-9 w-9 text-white rounded-full 
+               transition-transform duration-300 ease-in-out 
+               group-hover:rotate-45"
+            />
             <FaRegDotCircle className="text-white" />
             <span className="text-lg">
               {i18n.language === "en" ? "ع" : "EN"}

@@ -15,7 +15,10 @@ const About = () => {
         bgImage="/assets/images/imag1.jpg"
         topOverlayColor="rgba(9, 1, 50, 0.52)"
       >
-        <RoundedButtton children="من نحن" className="bg-white/20" />
+        <RoundedButtton
+          children="من نحن"
+          className="bg-white/20 p-3 h-fit w-[250px]"
+        />
       </PagesHeroSection>
 
       <section className="mt-14">

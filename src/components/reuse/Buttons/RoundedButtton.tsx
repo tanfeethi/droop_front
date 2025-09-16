@@ -11,13 +11,13 @@ const RoundedButtton: React.FC<ButtonProps> = ({
   children,
   onClick,
   type = "button",
-  className = "",
+  className = "w-[175px]",
 }) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`w-[175px] h-[47px] bg-[#CFDCFF] font-bold text-2xl rounded-full border border-[#274185] cursor-pointer ${className}`}
+      className={` h-[47px] bg-[#CFDCFF] font-bold text-2xl rounded-full border border-[#274185] cursor-pointer ${className}`}
     >
       {children}
     </button>
@@ -25,7 +25,3 @@ const RoundedButtton: React.FC<ButtonProps> = ({
 };
 
 export default RoundedButtton;
-
-
-
-

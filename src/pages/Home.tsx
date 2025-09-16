@@ -42,9 +42,12 @@ const Home = () => {
           <div className="w-full mt-20">
             <div className="grid gap-12 h-[580px] mb-5 grid-cols-1 md:grid-cols-3 ">
               <BackgroundCard
+
+
                 imageUrl="/assets/images/service1.webp"
                 title="القيادة والادارة التنفيذية"
                 description="تطوير المهارات القيادية واإلدارية"
+              
               />
 
               <BackgroundCard

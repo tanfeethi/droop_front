@@ -5,6 +5,7 @@ interface PagesHeroSectionProps {
   bgImage?: string;
   bgGradient?: string;
   topOverlayColor?: string; // overlay color
+  extraHeight?: string;
 }
 
 const PagesHeroSection = ({
@@ -12,10 +13,11 @@ const PagesHeroSection = ({
   bgImage,
   bgGradient = "linear-gradient(to bottom, #00103B 90%, #274185 90%)",
   topOverlayColor = "rgba(0, 0, 0, 0.3)", // default semi-transparent black
+  extraHeight = "h-[600px]",
 }: PagesHeroSectionProps) => {
   return (
     <section
-      className="h-[600px] pt-20 relative z-0"
+      className={`${extraHeight} pt-20 relative z-0`}
       style={{
         backgroundImage: bgImage
           ? `url(${bgImage}), ${bgGradient}`
