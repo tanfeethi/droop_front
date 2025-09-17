@@ -9,10 +9,9 @@ interface FullScreenLoaderProps {
 const FullScreenLoader = ({
   message = "جارٍ التحميل...",
   subMessage = "يرجى الانتظار قليلاً",
-  showLogo = true,
 }: FullScreenLoaderProps) => {
   return (
-    <div className="min-h-screen absolute w-full flex items-center justify-center z-50 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+    <div className="min-h-screen absolute w-full flex items-center justify-center z-50 bg-gradient-to-br from-[#00103B] via-blue-800 to-[#274185]">
       {/* Background Pattern Overlay */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full transform translate-x-32 -translate-y-32"></div>
@@ -28,25 +27,6 @@ const FullScreenLoader = ({
       </div>
 
       <div className="text-center relative z-10">
-        {/* Logo/Brand Area */}
-        {showLogo && (
-          <div className="mb-8">
-            <div className="w-20 h-20 mx-auto mb-4 relative">
-              {/* Stylized logo placeholder inspired by the image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-orange-500 rounded-lg transform rotate-12"></div>
-              <div className="absolute inset-2 bg-white rounded-md flex items-center justify-center">
-                <div className="text-2xl font-bold text-blue-800">د</div>
-              </div>
-            </div>
-            <div className="text-white text-lg font-semibold mb-2">
-              مركز دروب المستقبل للتدريب والاستشارات
-            </div>
-            <div className="text-blue-200 text-sm">
-              منصة رائدة ومتخصصة في تطوير الكفاءات البشرية
-            </div>
-          </div>
-        )}
-
         {/* Loading Animation */}
         <div className="mb-8">
           <div className="relative w-16 h-16 mx-auto">

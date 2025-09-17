@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import useContactForm from "../../hooks/contactus/useContactForm";
 
 interface ContactFormData {
   firstName: string;
@@ -38,6 +39,7 @@ const ContactForm = ({
   buttonWidth = "w-full",
   buttonExtraClasses = "",
 }: ContactFormProps) => {
+  const { mutate, isSuccess, isError, error } = useContactForm();
   const [form, setForm] = useState<ContactFormData>({
     firstName: "",
     lastName: "",
@@ -82,8 +84,27 @@ const ContactForm = ({
       return;
     }
     setErrors({});
-    console.log("Form Data:", form);
-    alert("✅ تم ارسال رسالتك بنجاح!");
+
+    // ✅ Transform to API structure
+    const payload = {
+      name: `${form.firstName} ${form.lastName}`,
+      email: form.email,
+      phone: form.phone,
+      subject: "Contact Form Submission", // or a field if you want subject input
+      massage: form.message, // notice your API expects "massage"
+    };
+
+    mutate(payload, {
+      onSuccess: () => {
+        setForm({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      },
+    });
   };
 
   return (
@@ -197,6 +218,16 @@ const ContactForm = ({
           ارسال
           <IoIosArrowBack />
         </button>
+        {isSuccess && (
+          <div className="bg-green-200 p-3 mt-5 text-center rounded-lg text-green-900">
+            تم استلام رسالتك
+          </div>
+        )}
+        {isError && (
+          <div className="bg-red-200 p-3 mt-5 text-center rounded-lg text-red-900">
+            {error.response?.data.error || "حدث خطأ ما"}
+          </div>
+        )}
       </form>
     </div>
   );

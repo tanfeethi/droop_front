@@ -7,8 +7,11 @@ import WrapperContainer from "../components/reuse/WrapperContainer";
 import InfoCard from "../components/reuse/Card/InfoCard";
 import { PiCertificateFill } from "react-icons/pi";
 import NumberDisplay from "../components/once/NumberDisplay";
+import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
 
 const About = () => {
+  const { data: staticData } = useFetchStaticPages();
+  const aboutData = staticData?.find((item) => item.name === "about_us");
   return (
     <>
       <PagesHeroSection
@@ -27,22 +30,8 @@ const About = () => {
             مركز دروب المستقبل للتدريب واالستشارات
           </h1>
           <p className="w-[98%]">
-            <span className="block mb-7 text-2xl font-normal">
-              منصة رائدة ومتخصصة في تطوير الكفاءات البشرية وتقديم الحلول
-              االستشارية المتقدمة. نسعى إلحداث فرق حقيقي في األداء المؤسسي
-              والفردي، من خالل تقديم برامج تدريبية معتمدة واستشارات استراتيجية
-              تتماشى مع التغيرات السريعة في بيئات العمل
-            </span>
-
-            <span className="block mb-7 text-2xl font-normal">
-              نحن ملتزمون بنقل الخبرات العالمية عبر مدربين معتمدين و أساليب
-              تدريب تفاعلية لنصنع فرق حقيقي في تحسين األداء المؤسسي والفردي
-              ومواكبة تحوالت سوق العمل المتجددة
-            </span>
-
-            <span className="block mb-7 text-2xl font-normal">
-              ونعتز بدورنا في دعم مستهدفات رؤية المملكة ،2030 من خالل اإلسهام في
-              تنمية رأس المال البشري وتعزيز ثقافة التعلم والتطوير المستمر
+            <span className="block mb-7 text-xl font-normal">
+              {aboutData?.text}
             </span>
           </p>
           <VissionMetionSection />
@@ -109,7 +98,7 @@ const About = () => {
               {[...Array(4)].map((_, idx) => (
                 <div className="flex items-center mb-4" key={idx}>
                   <div className="flex items-center border-l-4 w-fit bg-gradient-to-r from-[#E4E7F2] to-[#F9FAFF] border-l-[#274185] py-5 text-[#000D30] rounded-l-[5px]">
-                    <span className="ml-5 font-bold md:text-3xl">
+                    <span className="ml-5 font-bold md:text-xl">
                       شراكات استراتيجية ناجحة مع الجهات الحكومية والخاصة، بما في
                       ذلك التعاون مع بلدية الخرج، مما عزز من تأثير برامجنا
                     </span>

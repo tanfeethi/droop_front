@@ -8,6 +8,8 @@ import {
   type TargetResolver,
 } from "framer-motion";
 import WrapperContainer from "../reuse/WrapperContainer";
+import { useFetchProgSliders } from "../../hooks/programsSliders/useFetchProgSliders";
+import ServiceSliderSKL from "./skeletons/ServiceSliderSKL";
 
 interface SlideData {
   title: string;
@@ -16,29 +18,21 @@ interface SlideData {
 }
 
 const CustomServiceSlider = () => {
-  const data: SlideData[] = [
-    {
-      title: "القطاع الحكومي",
-      description:
-        "نقدم برامج تدريبية متخصصة لدعم التحول المؤسسي وتعزيز كفاءة الاداء في الجهات الحكومية",
-      image: "/assets/images/service1.webp",
-    },
-    {
-      title: "القطاع الخاص",
-      description:
-        "نقدم برامج تدريبية متخصصة لدعم التحول المؤسسي وتعزيز كفاءة الاداء في الجهات الحكومية",
-      image: "/assets/images/service2.webp",
-    },
-    {
-      title: "الافراد",
-      description:
-        "نقدم برامج تدريبية متخصصة لدعم التحول المؤسسي وتعزيز كفاءة الاداء في الجهات الحكومية",
-      image: "/assets/images/service1.webp",
-    },
-  ];
+  const { data: programsData } = useFetchProgSliders();
+
+  const data: SlideData[] =
+    programsData?.map((item) => ({
+      title: item.title || "",
+      description: item.text || "",
+      image: item.background || "",
+    })) ?? [];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
+
+  if (!data.length) {
+    return <ServiceSliderSKL />;
+  }
 
   const handleNext = () => {
     setDirection(1);
@@ -221,7 +215,7 @@ const CustomServiceSlider = () => {
                   variants={{ ...textItemVariants, ...buttonVariants }}
                   whileHover="hover"
                   whileTap="tap"
-                  className="w-full bg-[#00103B] rounded-xl text-white py-3 md:py-3.5 mt-4 flex justify-center items-center gap-2"
+                  className="w-full bg-[#00103B] rounded-xl text-white py-3 md:py-3.5 mt-4 flex justify-center items-center gap-2 cursor-pointer"
                 >
                   <span className="text-lg md:text-2xl">اكتشف المزيد</span>
                 </motion.button>

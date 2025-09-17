@@ -2,8 +2,10 @@ import RoundedButtton from "../components/reuse/Buttons/RoundedButtton";
 import ServiceCard from "../components/reuse/Card/ServiceCard";
 import PagesHeroSection from "../components/reuse/hero/PagesHeroSection";
 import WrapperContainer from "../components/reuse/WrapperContainer";
+import { useFetchServices } from "../hooks/service/useFetchService";
 
 const Services = () => {
+  const { data: serviceData } = useFetchServices();
   return (
     <>
       <PagesHeroSection
@@ -27,40 +29,15 @@ const Services = () => {
           </p>
           <div className="w-full mt-20">
             <div className="grid gap-12 mb-5 grid-cols-1 md:grid-cols-3 ">
-              <ServiceCard
-                imageUrl="/assets/images/service1.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-                indexNumber="01"
-              />
-
-              <ServiceCard
-                imageUrl="/assets/images/service2.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-                indexNumber="02"
-              />
-
-              <ServiceCard
-                imageUrl="/assets/images/service1.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-                indexNumber="03"
-              />
-
-              <ServiceCard
-                imageUrl="/assets/images/service2.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-                indexNumber="04"
-              />
-
-              <ServiceCard
-                imageUrl="/assets/images/service1.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-                indexNumber="05"
-              />
+              {serviceData?.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  imageUrl={service.icon}
+                  title={service.title}
+                  description={service.text}
+                  indexNumber={`0${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </WrapperContainer>

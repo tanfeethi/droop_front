@@ -15,7 +15,10 @@ const ContactUs = () => {
           <div className="text-white">
             <div className="grid grid-cols-2 h-full">
               <div className="h-full flex items-center justify-start">
-                <RoundedButtton children="تواصل معنا" className="bg-white/30 " />
+                <RoundedButtton
+                  children="تواصل معنا"
+                  className="bg-white/30 "
+                />
               </div>
               <div className="h-full flex items-center justify-center">
                 <img

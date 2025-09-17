@@ -7,18 +7,29 @@ import CustomServiceSlider from "../components/once/CustomServiceSlider";
 import ContactForm from "../components/once/ContactForm";
 import VissionMetionSection from "../components/reuse/vision_Metion/VissionMetionSection";
 import ImageCard from "../components/reuse/Card/ImageCard";
+import { useNavigate } from "react-router";
+import { useFetchServices } from "../hooks/service/useFetchService";
+import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const { data: servicesData } = useFetchServices();
+  const { data: staticData } = useFetchStaticPages();
+  const aboutData = staticData?.find((item) => item.name === "about_us");
+
   return (
     <>
       <HeroCarousel />
       <section className="mb-10 pt-20">
         <WrapperContainer>
           <SectionWithButtons
+            onPrimaryClick={() => {
+              navigate("/about");
+            }}
             title="مركز دروب المستقبل للتدريب واالستشارات"
             primaryButtonText="من نحن"
             secondaryButtonText="تعرف علينا"
-            description="منصة رائدة ومتخصصة في تطوير الكفاءات البشرية وتقديم الحلول االستشارية المتقدمة. نسعى إلحداث فرق حقيقي في األداء المؤسسي والفردي، من خالل تقديم برامج تدريبية معتمدة واستشارات استراتيجية تتماشى مع التغيرات السريعة في بيئات العمل"
+            description={aboutData?.text || ""}
           />
 
           <ImageCard
@@ -35,39 +46,37 @@ const Home = () => {
           <SectionWithButtons
             title="خدماتنا التدريبية واالستشارية"
             primaryButtonText="خدماتنا"
+            onPrimaryClick={() => {
+              navigate("/services");
+            }}
+            onSecondaryClick={() => {
+              navigate("/services");
+            }}
             secondaryButtonText="رؤية الكل"
             description="نقدم في مركز دروب المستقبل حلولا تدريبية واستشارية شاملة للأفراد والمؤسسات، تشمل:"
           />
 
           <div className="w-full mt-20">
             <div className="grid gap-12 h-[580px] mb-5 grid-cols-1 md:grid-cols-3 ">
-              <BackgroundCard
-
-
-                imageUrl="/assets/images/service1.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-              
-              />
-
-              <BackgroundCard
-                imageUrl="/assets/images/service2.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-              />
-
-              <BackgroundCard
-                imageUrl="/assets/images/service1.webp"
-                title="القيادة والادارة التنفيذية"
-                description="تطوير المهارات القيادية واإلدارية"
-              />
+              {servicesData?.slice(0, 3).map((service, index) => (
+                <BackgroundCard
+                  key={index}
+                  imageUrl={service.icon}
+                  title={service.title}
+                  description={service.text}
+                />
+              ))}
             </div>
           </div>
         </WrapperContainer>
       </section>
 
       <section className="w-full mt-16 text-center flex flex-col items-center justify-center mb-20">
-        <RoundedButtton className="mb-9" children={<span>خدماتنا</span>} />
+        <RoundedButtton
+          onClick={() => navigate("/services")}
+          className="mb-9"
+          children={<span className="px-7">خدماتنا</span>}
+        />
         <h2 className="font-bold text-4xl text-[#274185]">برامجنا المتخصصة</h2>
         <p className="text-2xl font-normal mt-5">
           نحرص على تقديم برامج مرنة تواكب احتياجات كلا من :

@@ -27,10 +27,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out">
       <div
-        className={`flex justify-between items-center px-6 py-4 xl:px-8 2xl:px-20 transition-all duration-500 ease-in-out ${
+        className={`flex justify-between items-center px-6 py-4 xl:px-8 2xl:px-20  ${
           isScrolled
             ? "bg-[#00103B]/50 shadow-md"
-            : "bg-transparent shadow-none"
+            : `${isOpen ? "bg-[#00103B] shadow-md" : "bg-transparent"}`
         }`}
       >
         {/* Logo */}
@@ -149,30 +149,99 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="fixed top-16 left-0 w-full bg-white text-black z-[999] shadow-md lg:hidden">
+        <div className="fixed top-16 left-0 w-full bg-[#00103A] text-black z-[999] shadow-md lg:hidden ">
           <ul className="flex flex-col items-center text-lg font-medium px-6 py-4 space-y-4">
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  isActive ? "text-black underline" : "hover:text-black"
+                  isActive
+                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    : "text-white/70 text-2xl p-2 hover:text-white"
                 }
               >
-                {t("home")}
+                الرئيسية
               </NavLink>
             </li>
-            <NavLink to="/contact-us">
-              <button className="bg-white px-5 py-2 rounded-md text-black flex items-center gap-3">
-                {t("contact")}
-              </button>
-            </NavLink>
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    : "text-white/70 text-2xl p-2 hover:text-white"
+                }
+              >
+                من نحن
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/Corporate_consulting"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    : "text-white/70 text-2xl p-2 hover:text-white"
+                }
+              >
+                الاستشارات المؤسسية
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/services"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    : "text-white/70 text-2xl p-2 hover:text-white"
+                }
+              >
+                خدماتنا
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/programs"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    : "text-white/70 text-2xl p-2 hover:text-white"
+                }
+              >
+                برامجنا
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact-us"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    : "text-white/70 text-2xl p-2 hover:text-white"
+                }
+              >
+                تواصل معنا
+              </NavLink>
+            </li>
+          </ul>
+          <div className="w-full flex items-center justify-center flex-col gap-4">
             <button
               onClick={toggleLanguage}
-              className="bg-[#D5D5D5] h-[45px] w-[45px] flex items-center justify-center rounded-full font-bold"
+              className="group bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1 cursor-pointer"
             >
-              {i18n.language === "en" ? "ع" : "EN"}
+              <TbRefresh
+                className="bg-[#00103B] p-2 h-9 w-9 text-white rounded-full 
+               transition-transform duration-300 ease-in-out 
+               group-hover:rotate-45"
+              />
+              <span className="text-lg">
+                {i18n.language === "en" ? "ع" : "EN"}
+              </span>
             </button>
-          </ul>
+          </div>
         </div>
       )}
     </nav>

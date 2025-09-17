@@ -1,35 +1,28 @@
 import { FaArrowRight } from "react-icons/fa";
-import im1 from "/assets/heroCarousel/im1.webp";
-import im2 from "/assets/heroCarousel/im2.webp";
-import im3 from "/assets/heroCarousel/im3.webp";
-import im4 from "/assets/heroCarousel/im4.webp";
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CarouselIndicator from "./Carouselndicator";
 import WrapperContainer from "../WrapperContainer";
-
-type CarouselProps = {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-};
-
-const carouselData: CarouselProps[] = [
-  { id: 1, title: "عنوان رقم 1", description: "وصف رقم 1", image: im1 },
-  { id: 2, title: "عنوان رقم 2", description: "وصف رقم 2", image: im2 },
-  { id: 3, title: "عنوان رقم 3", description: "وصف رقم 3", image: im3 },
-  { id: 4, title: "عنوان رقم 4", description: "وصف رقم 4", image: im4 },
-];
+import { useFetchHeroSlider } from "../../../hooks/heroSlider/heroSlider";
 
 const HeroCarousel = () => {
+  const { data: carouselData } = useFetchHeroSlider();
+
   const [activeIndex, setActiveIndex] = useState(0);
+
+  if (!carouselData || carouselData.length === 0) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
 
   // Preload Images
   useEffect(() => {
     carouselData.forEach((item) => {
       const img = new Image();
-      img.src = item.image;
+      img.src = item.background;
     });
   }, []);
 
@@ -44,7 +37,7 @@ const HeroCarousel = () => {
       <AnimatePresence mode="sync">
         <motion.img
           key={carouselData[activeIndex].id}
-          src={carouselData[activeIndex].image}
+          src={carouselData[activeIndex].background}
           alt={`slide-${activeIndex}`}
           className="absolute inset-0 w-full h-full object-cover object-top will-change-transform"
           initial={{ opacity: 0 }}
@@ -98,7 +91,7 @@ const HeroCarousel = () => {
                     {carouselData[activeIndex].title}
                   </h1>
                   <p className="max-w-[759px]">
-                    {carouselData[activeIndex].description}
+                    {carouselData[activeIndex].text}
                   </p>
                 </motion.div>
               </AnimatePresence>
