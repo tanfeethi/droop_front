@@ -8,10 +8,32 @@ import InfoCard from "../components/reuse/Card/InfoCard";
 import { PiCertificateFill } from "react-icons/pi";
 import NumberDisplay from "../components/once/NumberDisplay";
 import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
+import { FaHandsHelping } from "react-icons/fa";
+import { HiMiniRectangleGroup } from "react-icons/hi2";
 
 const About = () => {
   const { data: staticData } = useFetchStaticPages();
   const aboutData = staticData?.find((item) => item.name === "about_us");
+
+  const achivementData = [
+    {
+      description:
+        "نفيذ أكثر من 30 برنام ًجا تدريبًيا في قطاعات متنوعة، مما ساهم في تطوير مهارات األفراد ورفع كفاءة المؤسسات",
+    },
+    {
+      description:
+        "شراكات استراتيجية ناجحة مع الجهات الحكومية والخاصة، بما في ذلك التعاون مع بلدية الخرج، مما عزز من تأثير برامجنا",
+    },
+    {
+      description:
+        "تقديم استشارات استراتيجية ح ّسنت بيئات العمل ورفعت مستويات األداء المؤسسي في العديد من المؤسسات",
+    },
+    {
+      description:
+        "تدريب مئات الموظفين والمؤسسات على أحدث المهارات القيادية والفنية، مما أسهم في تعزيز اإلنتاجية وتحقيق النجاح المستدام",
+    },
+  ];
+
   return (
     <>
       <PagesHeroSection
@@ -27,7 +49,7 @@ const About = () => {
       <section className="mt-14">
         <WrapperContainer>
           <h1 className="text-4xl text-[#274185] font-extrabold mb-10">
-            مركز دروب المستقبل للتدريب واالستشارات
+            مركز دروب المستقبل للتدريب و الاستشارات
           </h1>
           <p className="w-[98%]">
             <span className="block mb-7 text-xl font-normal">
@@ -59,15 +81,16 @@ const About = () => {
               description="نضع أعلى معايير الجودة في جميع برامجنا التدريبية واالستشارية لمساعدة عمالئنا على التفوق في مجاالتهم.ونقدم تجارب تدريبية
 تواكب تطورات األعمال للوصول لنتائج ترضي المؤسسات واألفراد."
             />
+
             <InfoCard
-              icon={<TfiThumbUp className="text-6xl scale-x-[-1]" />}
+              icon={<HiMiniRectangleGroup className="text-6xl scale-x-[-1]" />}
               title="أثر قابل للقياس"
               description="نحرص على أن تكون كل تجربة تدريبية أو استشارية لدينا نقطة تحول حقيقية لعمالئنا. و نعمل على قياس أثر برامجنا من خلال
 تحسين األداء المهني وزيادة الكفاءة في العمل"
             />
             <InfoCard
-              icon={<TfiThumbUp className="text-6xl scale-x-[-1]" />}
-              title="الشفافية والالتزام"
+              icon={<FaHandsHelping className="text-6xl scale-x-[-1]" />}
+              title="شراكات فاعلة"
               description="نؤمن بقوة التعاون والشراكات الفاعلة مع عمالئنا وشركائنا االستراتيجيين. نعمل مًعا لتحقيق أهداف مشتركة ودفع استراتيجيات
 التحول والنمو"
             />
@@ -95,12 +118,11 @@ const About = () => {
                 إنجازاتنا
               </h5>
 
-              {[...Array(4)].map((_, idx) => (
+              {achivementData.map((item, idx) => (
                 <div className="flex items-center mb-4" key={idx}>
                   <div className="flex items-center border-l-4 w-fit bg-gradient-to-r from-[#E4E7F2] to-[#F9FAFF] border-l-[#274185] py-5 text-[#000D30] rounded-l-[5px]">
                     <span className="ml-5 font-bold md:text-xl">
-                      شراكات استراتيجية ناجحة مع الجهات الحكومية والخاصة، بما في
-                      ذلك التعاون مع بلدية الخرج، مما عزز من تأثير برامجنا
+                      {item.description}
                     </span>
                   </div>
                   <NumberDisplay number={`0${idx + 1}`} />

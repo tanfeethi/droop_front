@@ -26,7 +26,7 @@ const Home = () => {
             onPrimaryClick={() => {
               navigate("/about");
             }}
-            title="مركز دروب المستقبل للتدريب واالستشارات"
+            title="مركز دروب المستقبل للتدريب و الاستشارات"
             primaryButtonText="من نحن"
             secondaryButtonText="تعرف علينا"
             description={aboutData?.text || ""}
@@ -44,7 +44,7 @@ const Home = () => {
       <section className="bg-[#F6F9FF] pt-28">
         <WrapperContainer>
           <SectionWithButtons
-            title="خدماتنا التدريبية واالستشارية"
+            title="خدماتنا التدريبية الاستشارية"
             primaryButtonText="خدماتنا"
             onPrimaryClick={() => {
               navigate("/services");

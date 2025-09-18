@@ -10,6 +10,7 @@ import Sector from "../components/reuse/Sector";
 import { useFetchProgSliders } from "../hooks/programsSliders/useFetchProgSliders";
 import { motion, AnimatePresence } from "framer-motion";
 import ProgramsSkeleton from "../components/once/skeletons/ProgramsSkeleton";
+import DOMPurify from "dompurify";
 
 interface SlideData {
   title: string;
@@ -43,8 +44,8 @@ const Programs = () => {
 
   return (
     <>
-      <PagesHeroSection extraHeight="h-[600px]">
-        <div className="w-full mt-20 grid grid-cols-2">
+      <PagesHeroSection extraHeight="md:h-[600px]">
+        <div className="w-full mt-20 grid grid-cols-1 md:grid-cols-2">
           {/* === LEFT SIDE (Text + Buttons) === */}
           <div>
             <h1 className="text-4xl font-bold mb-5">برامجنا المتخصصة</h1>
@@ -53,7 +54,7 @@ const Programs = () => {
             </p>
             <Divider />
 
-            <div className="mt-11 flex items-center gap-8">
+            <div className="mt-11 flex flex-col items-center gap-8 md:flex-row">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentIndex}
@@ -61,9 +62,11 @@ const Programs = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-6xl font-bold block"
+                  className=" font-bold block text-4xl md:text-6xl"
                 >
-                  {data[currentIndex].title}
+                  {DOMPurify.sanitize(data[currentIndex].title, {
+                    ALLOWED_TAGS: [],
+                  })}
                 </motion.span>
               </AnimatePresence>
 
@@ -83,21 +86,23 @@ const Programs = () => {
               </div>
             </div>
 
-            <RoundedButtton
-              className="bg-blue-600/30 p-3 h-fit w-[250px] mt-6"
-              onClick={() => {
-                window.scrollBy({ top: 600, behavior: "smooth" });
-              }}
-            >
-              <span className="flex items-center gap-5">
-                رؤية التفاصيل
-                <MdKeyboardDoubleArrowDown className="bg-[#416AD7] rounded-full text-4xl p-1" />
-              </span>
-            </RoundedButtton>
+            <div className=" text-center md:text-start">
+              <RoundedButtton
+                className="bg-blue-600/30 p-3 h-fit w-[250px] mt-6 mb-20 md:mb-0 m-auto"
+                onClick={() => {
+                  window.scrollBy({ top: 600, behavior: "smooth" });
+                }}
+              >
+                <span className="flex items-center gap-5">
+                  رؤية التفاصيل
+                  <MdKeyboardDoubleArrowDown className="bg-[#416AD7] rounded-full text-4xl p-1" />
+                </span>
+              </RoundedButtton>
+            </div>
           </div>
 
           {/* === RIGHT SIDE (Image) === */}
-          <div>
+          <div className="hidden md:block">
             <div className="mt-20 relative">
               <img src="/assets/images/laptop.webp" alt="" />
 

@@ -2,6 +2,7 @@
 import { TbArrowLeftDashed } from "react-icons/tb";
 import RoundedButtton from "./Buttons/RoundedButtton";
 import CustomButton from "./Buttons/CustomButton";
+import DOMPurify from "dompurify";
 
 interface SectionWithButtonsProps {
   title: string;
@@ -40,7 +41,9 @@ const SectionWithButtons: React.FC<SectionWithButtonsProps> = ({
 
         <h1 className="font-bold text-[#274185] text-4xl mt-14">{title}</h1>
 
-        <p className="text-[#000D30] w-full mt-12 md:w-[70%]">{description}</p>
+        <p className="text-[#000D30] w-full mt-12 md:w-[70%]">
+          {DOMPurify.sanitize(description, { ALLOWED_TAGS: [] })}
+        </p>
       </div>
 
       {/* Secondary Button */}

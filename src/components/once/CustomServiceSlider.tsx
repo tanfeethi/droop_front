@@ -10,6 +10,8 @@ import {
 import WrapperContainer from "../reuse/WrapperContainer";
 import { useFetchProgSliders } from "../../hooks/programsSliders/useFetchProgSliders";
 import ServiceSliderSKL from "./skeletons/ServiceSliderSKL";
+import DOMPurify from "dompurify";
+import { useNavigate } from "react-router";
 
 interface SlideData {
   title: string;
@@ -19,6 +21,7 @@ interface SlideData {
 
 const CustomServiceSlider = () => {
   const { data: programsData } = useFetchProgSliders();
+  const navigate = useNavigate();
 
   const data: SlideData[] =
     programsData?.map((item) => ({
@@ -209,9 +212,12 @@ const CustomServiceSlider = () => {
                   variants={textItemVariants}
                   className="text-base md:text-2xl font-normal"
                 >
-                  {data[currentIndex].description}
+                  {DOMPurify.sanitize(data[currentIndex].description, {
+                    ALLOWED_TAGS: [],
+                  })}
                 </motion.p>
                 <motion.button
+                  onClick={() => navigate("/programs")}
                   variants={{ ...textItemVariants, ...buttonVariants }}
                   whileHover="hover"
                   whileTap="tap"

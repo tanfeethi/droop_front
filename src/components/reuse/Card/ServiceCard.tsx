@@ -1,5 +1,6 @@
 import React from "react";
 import NumberDisplay from "../../once/NumberDisplay";
+import DOMPurify from "dompurify";
 
 interface BackgroundCardProps {
   imageUrl: string;
@@ -35,9 +36,15 @@ const ServiceCard: React.FC<BackgroundCardProps> = ({
         number={indexNumber}
       />
       <div>
-        {title && <h2 className="text-white text-[28px] font-bold">{title}</h2>}
+        {title && (
+          <h2 className="text-white text-[28px] font-bold">
+            {DOMPurify.sanitize(title, { ALLOWED_TAGS: [] })}
+          </h2>
+        )}
         {description && (
-          <p className="text-white text-[16px] font-normal">{description}</p>
+          <p className="text-white text-[16px] font-normal">
+            {DOMPurify.sanitize(description, { ALLOWED_TAGS: [] })}
+          </p>
         )}
       </div>
       {children}

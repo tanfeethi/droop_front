@@ -1,4 +1,5 @@
 import React from "react";
+import DOMPurify from "dompurify";
 
 interface BackgroundCardProps {
   imageUrl: string;
@@ -25,9 +26,16 @@ const BackgroundCard: React.FC<BackgroundCardProps> = ({
         `,
       }}
     >
-      {title && <h2 className="text-white text-[28px] font-bold">{title}</h2>}
+      {title && (
+        <h2 className="text-white text-[28px] font-bold">
+          {DOMPurify.sanitize(title, { ALLOWED_TAGS: [] })}
+        </h2>
+      )}
       {description && (
-        <p className="text-white text-[16px] font-normal">{description}</p>
+        <p className="text-white text-[16px] font-normal">
+          {" "}
+          {DOMPurify.sanitize(description, { ALLOWED_TAGS: [] })}
+        </p>
       )}
       {children}
     </div>

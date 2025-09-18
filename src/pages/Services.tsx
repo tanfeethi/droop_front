@@ -21,7 +21,7 @@ const Services = () => {
       <section className="w-full min-h-screen pt-10">
         <WrapperContainer>
           <h1 className="text-[#274185] text-4xl font-bold mb-3">
-            خدماتنا التدريبية واالستشارية
+            خدماتنا التدريبية الاستشارية
           </h1>
           <p className="text-2xl font-normal mr-8">
             نقدم في مركز دروب المستقبل حلولا تدريبية واستشارية شاملة للأفراد

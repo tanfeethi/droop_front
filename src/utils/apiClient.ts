@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://droopbackend.tanfeethi.tanfeethi.com.sa",
+  baseURL: "https://backend.dmt-edu.com",
 });
 
 apiClient.interceptors.request.use((config) => {
-  const lang = localStorage.getItem("lang");
+  const lang = localStorage.getItem("lang") || "ar";
   if (lang) {
     config.headers["lang"] = lang;
   }

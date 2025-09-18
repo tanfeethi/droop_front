@@ -39,7 +39,7 @@ const ContactForm = ({
   buttonWidth = "w-full",
   buttonExtraClasses = "",
 }: ContactFormProps) => {
-  const { mutate, isSuccess, isError, error } = useContactForm();
+  const { mutate, isSuccess, isError, error, isPending } = useContactForm();
   const [form, setForm] = useState<ContactFormData>({
     firstName: "",
     lastName: "",
@@ -212,10 +212,11 @@ const ContactForm = ({
 
         {/* Submit Button */}
         <button
+          disabled={isPending}
           type="submit"
           className={`${buttonWidth} ${buttonBg} ${buttonHoverBg} ${buttonTextColor} ${buttonExtraClasses} font-medium py-3 rounded-md transition cursor-pointer flex items-center`}
         >
-          ارسال
+          {isPending ? "جاري الارسال..." : "ارسال"}
           <IoIosArrowBack />
         </button>
         {isSuccess && (

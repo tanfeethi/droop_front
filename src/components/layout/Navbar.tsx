@@ -8,7 +8,7 @@ import { TbRefresh } from "react-icons/tb";
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { t, i18n } = useTranslation("nav");
+  const { i18n } = useTranslation("nav");
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "en" ? "ar" : "en";
