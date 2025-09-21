@@ -1,5 +1,6 @@
 import React from "react";
 import NumberDisplay from "../once/NumberDisplay";
+import DOMPurify from "dompurify";
 
 interface SectorProps {
   number: string;
@@ -34,11 +35,11 @@ const Sector: React.FC<SectorProps> = ({
         <NumberDisplay number={number} strokeColor={strokeColor} size={size} />
 
         <div className="text-right justify-start text-[#00103B] text-4xl font-bold mb-5">
-          {title}
+          {DOMPurify.sanitize(title, { ALLOWED_TAGS: [] })}
         </div>
 
         <div className="text-right justify-start text-slate-900 text-xl font-normal font-['Almarai'] capitalize leading-normal">
-          {description}
+          {DOMPurify.sanitize(description, { ALLOWED_TAGS: [] })}
         </div>
       </div>
     </div>

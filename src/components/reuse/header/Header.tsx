@@ -1,5 +1,6 @@
 import React from "react";
 import WrapperContainer from "../WrapperContainer";
+import DOMPurify from "dompurify";
 
 interface HeaderProps {
   title: string;
@@ -32,13 +33,13 @@ const Header: React.FC<HeaderProps> = ({
           <span
             className={`text-3xl font-bold mb-12 ${titleColor} md:text-5xl md:mb-8`}
           >
-            {title}
+            {DOMPurify.sanitize(title, { ALLOWED_TAGS: [] })}
           </span>
           {subtitle && (
             <span
               className={`text-right justify-start text-2xl font-normal font-['Almarai'] ${subtitleColor}`}
             >
-              {subtitle}
+              {DOMPurify.sanitize(subtitle, { ALLOWED_TAGS: [] })}
             </span>
           )}
         </span>

@@ -3,8 +3,10 @@ import { Link } from "react-router";
 import { TbBrandYoutube } from "react-icons/tb";
 import { RiSnapchatLine } from "react-icons/ri";
 import { BsTwitterX } from "react-icons/bs";
+import { useFetchSettings } from "../../hooks/settings/useFetchSettings";
 
 const Footer = () => {
+  const { data } = useFetchSettings();
   return (
     <footer className=" bg-[#000616]">
       <div>
@@ -49,16 +51,13 @@ const Footer = () => {
                 <ul className="space-y-5">
                   <li>
                     {/* Chairman */}
-                    <Link
-                      to="/#Chairman"
-                      className="hover:text-blue-200 transition"
-                    >
+                    <Link to="/" className="hover:text-blue-200 transition">
                       الرئيسية
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/#mission"
+                      to="/about"
                       className="hover:text-blue-200 transition"
                     >
                       من نحن
@@ -66,7 +65,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/#statistics"
+                      to="/Corporate_consulting"
                       className="hover:text-blue-200 transition"
                     >
                       الاستشارات المؤسسية
@@ -74,7 +73,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/#diploma"
+                      to="/services"
                       className="hover:text-blue-200 transition"
                     >
                       خدماتنا
@@ -82,7 +81,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/#sponsers"
+                      to="/contact-us"
                       className="hover:text-blue-200 transition"
                     >
                       تواصل معنا
@@ -99,7 +98,7 @@ const Footer = () => {
                 <ul className="space-y-5">
                   <li>
                     <Link
-                      to="/about"
+                      to="/programs"
                       className="hover:text-blue-200 transition"
                     >
                       القطاع الحكومي
@@ -107,7 +106,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/diploma-department"
+                      to="/programs"
                       className="hover:text-blue-200 transition"
                     >
                       القطاع الخاص
@@ -115,7 +114,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/vacancies"
+                      to="/programs"
                       className="hover:text-blue-200 transition"
                     >
                       الأفراد
@@ -132,27 +131,24 @@ const Footer = () => {
 
                 <div className="flex items-center gap-2 ">
                   <FaEnvelope className="text-blue-300" />
-                  <span>البريد الإليكتروني</span>
+
+                  <span>{data?.email}</span>
                 </div>
                 <div className="flex items-center gap-2 ">
                   <FaPhone className="text-blue-300" />
-                  <span>رقم الجوال</span>
+                  {data?.phones[0]}
                 </div>
-                {/* <div className="flex items-center gap-2 ">
-                  <FaMapMarkerAlt className="text-blue-300" />
-                  <span>address</span>
-                </div> */}
                 <div className="flex gap-4">
-                  <div className="border border-white p-1 rounded-lg">
+                  <div className="border border-white p-1 rounded-lg cursor-pointer">
                     <FaInstagram className="text-2xl font-bold" />
                   </div>
-                  <div className="border border-white p-1 rounded-lg">
+                  <div className="border border-white p-1 rounded-lg cursor-pointer">
                     <BsTwitterX className="text-2xl font-bold" />
                   </div>
-                  <div className="border border-white p-1 rounded-lg">
+                  <div className="border border-white p-1 rounded-lg cursor-pointer">
                     <RiSnapchatLine className="text-2xl font-bold" />
                   </div>
-                  <div className="border border-white p-1 rounded-lg">
+                  <div className="border border-white p-1 rounded-lg cursor-pointer">
                     <TbBrandYoutube className="text-2xl font-bold" />
                   </div>
                 </div>

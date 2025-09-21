@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router";
-import { useTranslation } from "react-i18next";
-import { changeLanguage } from "../../utils/i18n";
+// import { useTranslation } from "react-i18next";
+// import { changeLanguage } from "../../utils/i18n";
 import { FaRegDotCircle, FaBars, FaTimes } from "react-icons/fa";
-import { TbRefresh } from "react-icons/tb";
+// import { TbRefresh } from "react-icons/tb";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { i18n } = useTranslation("nav");
+  // const { i18n } = useTranslation("nav");
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === "en" ? "ar" : "en";
-    changeLanguage(newLang);
-  };
+  // const toggleLanguage = () => {
+  //   const newLang = i18n.language === "en" ? "ar" : "en";
+  //   changeLanguage(newLang);
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
             </button>
           </NavLink>
 
-          <button
+          {/* <button
             onClick={toggleLanguage}
             className="group bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1 cursor-pointer"
           >
@@ -133,7 +133,7 @@ const Navbar: React.FC = () => {
             <span className="text-lg">
               {i18n.language === "en" ? "ع" : "EN"}
             </span>
-          </button>
+          </button> */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -227,7 +227,7 @@ const Navbar: React.FC = () => {
               </NavLink>
             </li>
           </ul>
-          <div className="w-full flex items-center justify-center flex-col gap-4">
+          {/* <div className="w-full flex items-center justify-center flex-col gap-4">
             <button
               onClick={toggleLanguage}
               className="group bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1 cursor-pointer"
@@ -241,7 +241,7 @@ const Navbar: React.FC = () => {
                 {i18n.language === "en" ? "ع" : "EN"}
               </span>
             </button>
-          </div>
+          </div> */}
         </div>
       )}
     </nav>

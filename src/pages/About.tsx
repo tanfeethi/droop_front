@@ -10,6 +10,7 @@ import NumberDisplay from "../components/once/NumberDisplay";
 import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
 import { FaHandsHelping } from "react-icons/fa";
 import { HiMiniRectangleGroup } from "react-icons/hi2";
+import DOMPurify from "dompurify";
 
 const About = () => {
   const { data: staticData } = useFetchStaticPages();
@@ -52,8 +53,11 @@ const About = () => {
             مركز دروب المستقبل للتدريب و الاستشارات
           </h1>
           <p className="w-[98%]">
-            <span className="block mb-7 text-xl font-normal">
-              {aboutData?.text}
+            <span className="block mb-7 text-xl font-normal"></span>
+            <span className="block text-xl font-normal">
+              {DOMPurify.sanitize(aboutData?.text || "", {
+                ALLOWED_TAGS: [],
+              })}
             </span>
           </p>
           <VissionMetionSection />
