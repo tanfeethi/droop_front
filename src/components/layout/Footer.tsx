@@ -4,9 +4,12 @@ import { TbBrandYoutube } from "react-icons/tb";
 import { RiSnapchatLine } from "react-icons/ri";
 import { BsTwitterX } from "react-icons/bs";
 import { useFetchSettings } from "../../hooks/settings/useFetchSettings";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const { data } = useFetchSettings();
+  const { t } = useTranslation("footer");
+
   return (
     <footer className=" bg-[#000616]">
       <div>
@@ -25,20 +28,15 @@ const Footer = () => {
 
                     <div data-aos="fade-up" className=" max-w-lg mt-5">
                       <p className="md:max-w-[250px] text-xs md:text-sm text-gray-300 leading-relaxed">
-                        مركز دروب المستقبل للتدريب الاستشارات هو منصة رائدة
-                        ومتخصصة في تطوير الكفاءات البشرية وتقديم الحلول
-                        االستشارية المتقدمة. نسعى إلحداث فرق حقيقي في األداء
-                        المؤسسي والفردي، من خالل تقديم برامج تدريبية معتمدة
-                        واستشارات استراتيجية تتماشى مع التغيرات السريعة في بيئات
-                        العمل
+                        {t("footer.about")}
                       </p>
                     </div>
 
-                    <div data-aos="fade-up" className=" mt-5">
+                    {/* <div data-aos="fade-up" className=" mt-5">
                       <button className="text-xs md:text-sm text-gray-300 leading-relaxed cursor-pointer">
-                        الشروط و الاحكام
+                        {t("footer.terms")}
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -46,13 +44,12 @@ const Footer = () => {
               {/* Column 2: Main Links */}
               <div data-aos="fade-up" data-aos-delay="100">
                 <h3 className="text-lg font-bold mb-4 text-blue-200">
-                  روابط سريعة
+                  {t("footer.quickLinks")}
                 </h3>
                 <ul className="space-y-5">
                   <li>
-                    {/* Chairman */}
                     <Link to="/" className="hover:text-blue-200 transition">
-                      الرئيسية
+                      {t("footer.home")}
                     </Link>
                   </li>
                   <li>
@@ -60,7 +57,7 @@ const Footer = () => {
                       to="/about"
                       className="hover:text-blue-200 transition"
                     >
-                      من نحن
+                      {t("footer.aboutUs")}
                     </Link>
                   </li>
                   <li>
@@ -68,7 +65,7 @@ const Footer = () => {
                       to="/Corporate_consulting"
                       className="hover:text-blue-200 transition"
                     >
-                      الاستشارات المؤسسية
+                      {t("footer.corporateConsulting")}
                     </Link>
                   </li>
                   <li>
@@ -76,7 +73,7 @@ const Footer = () => {
                       to="/services"
                       className="hover:text-blue-200 transition"
                     >
-                      خدماتنا
+                      {t("footer.services")}
                     </Link>
                   </li>
                   <li>
@@ -84,7 +81,7 @@ const Footer = () => {
                       to="/contact-us"
                       className="hover:text-blue-200 transition"
                     >
-                      تواصل معنا
+                      {t("footer.contactUs")}
                     </Link>
                   </li>
                 </ul>
@@ -93,7 +90,7 @@ const Footer = () => {
               {/* Column 3: Secondary Links */}
               <div data-aos="fade-left" data-aos-delay="200">
                 <h3 className="text-lg font-bold mb-4 text-blue-200">
-                  برامجنا
+                  {t("footer.programs")}
                 </h3>
                 <ul className="space-y-5">
                   <li>
@@ -101,7 +98,7 @@ const Footer = () => {
                       to="/programs"
                       className="hover:text-blue-200 transition"
                     >
-                      القطاع الحكومي
+                      {t("footer.governmentSector")}
                     </Link>
                   </li>
                   <li>
@@ -109,7 +106,7 @@ const Footer = () => {
                       to="/programs"
                       className="hover:text-blue-200 transition"
                     >
-                      القطاع الخاص
+                      {t("footer.privateSector")}
                     </Link>
                   </li>
                   <li>
@@ -117,21 +114,20 @@ const Footer = () => {
                       to="/programs"
                       className="hover:text-blue-200 transition"
                     >
-                      الأفراد
+                      {t("footer.individuals")}
                     </Link>
                   </li>
                 </ul>
               </div>
 
-              {/* Column 4: Secondary Links */}
+              {/* Column 4: Contact */}
               <div data-aos="fade-left" className="space-y-5 text-gray-200 ">
                 <h3 className="text-lg font-bold mb-4 text-blue-200">
-                  تواصل معنا
+                  {t("footer.contact")}
                 </h3>
 
                 <div className="flex items-center gap-2 ">
                   <FaEnvelope className="text-blue-300" />
-
                   <span>{data?.email}</span>
                 </div>
                 <div className="flex items-center gap-2 ">
@@ -157,7 +153,7 @@ const Footer = () => {
 
             {/* Description */}
             <div className="text-white text-center p-5">
-              <span>دروب المستقبل - جميع الحقوق محفوظة - © 2024</span>
+              <span>{t("footer.rights")}</span>
             </div>
           </div>
         </div>

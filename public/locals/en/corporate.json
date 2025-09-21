@@ -1,0 +1,25 @@
+{
+  "corporateConsulting": {
+    "heroButton": "Corporate Consulting",
+    "headerTitle": "Corporate Consulting",
+    "headerSubtitle": "We offer training programs aimed at enabling individuals to develop their personal and technical skills:",
+    "services": [
+      {
+        "title": "Administrative Restructuring:",
+        "description": "Developing organizational structures that align with institutional needs and maximize resource utilization."
+      },
+      {
+        "title": "Enhancing Productivity:",
+        "description": "Improving internal processes to increase productivity and achieve tangible results."
+      },
+      {
+        "title": "Policy and Procedure Development:",
+        "description": "Providing consultancy to develop policies and procedures in line with global best practices."
+      },
+      {
+        "title": "Change Management and Institutional Transformation:",
+        "description": "Supporting organizations in change and transformation processes to ensure sustainable success and growth."
+      }
+    ]
+  }
+}

@@ -30,3 +30,17 @@ html[lang="ar"] {
            after:rounded-full;
   }
 }
+
+@layer components {
+  .custom-underline-right {
+    @apply relative inline-block 
+           after:content-[''] 
+           after:absolute 
+           after:left-2 
+           after:bottom-[-4px] 
+           after:w-1/3 
+           after:h-1 
+           after:bg-[#5785FF] 
+           after:rounded-full;
+  }
+}

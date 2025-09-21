@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import CarouselIndicator from "./Carouselndicator";
 import WrapperContainer from "../WrapperContainer";
 import { useFetchHeroSlider } from "../../../hooks/heroSlider/heroSlider";
+import { useTranslation } from "react-i18next";
 
 const HeroCarousel = () => {
+  const { i18n } = useTranslation();
   const { data: carouselData } = useFetchHeroSlider();
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -32,7 +34,7 @@ const HeroCarousel = () => {
   }, []);
 
   return (
-    <section dir="rtl" className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
       {/* Background Image with Framer Motion */}
       <AnimatePresence mode="sync">
         <motion.img
@@ -98,7 +100,7 @@ const HeroCarousel = () => {
 
               {/* CTA */}
               <button className="bg-[#274185] py-2.5 px-[86px] mt-14 rounded-[10px] font-bold">
-                ابدأ الأن
+                {i18n.language === "en" ? "Get Started" : "ابداء الان"}
               </button>
             </div>
           </div>

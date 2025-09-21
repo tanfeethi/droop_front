@@ -1,0 +1,24 @@
+{
+  "about": {
+    "hero_button": "About Us",
+    "title": "Duroob Al-Mustaqbal Center for Training and Consulting",
+    "values_section": "Our Values",
+    "info_cards": {
+      "transparency_title": "Transparency & Commitment",
+      "transparency_desc": "At Duroob Al-Mustaqbal Center, we are committed to providing clear training and consulting services. We build strong relationships of trust with our clients and ensure that every step is supported by clarity and credibility.",
+      "quality_title": "Quality",
+      "quality_desc": "We set the highest quality standards in all our training and consulting programs to help our clients excel in their fields. We provide training experiences that keep pace with business developments to achieve results that satisfy institutions and individuals.",
+      "impact_title": "Measurable Impact",
+      "impact_desc": "We ensure that every training or consulting experience is a real turning point for our clients. We measure the impact of our programs by improving professional performance and increasing efficiency at work.",
+      "partnerships_title": "Active Partnerships",
+      "partnerships_desc": "We believe in the power of collaboration and active partnerships with our clients and strategic partners. Together, we work to achieve shared goals and drive strategies for transformation and growth."
+    },
+    "achievements_title": "Our Achievements",
+    "achievements": [
+      "Implemented more than 30 training programs across various sectors, contributing to skill development and institutional efficiency.",
+      "Established successful strategic partnerships with government and private entities, including cooperation with Al-Kharj Municipality, which enhanced the impact of our programs.",
+      "Provided strategic consulting that improved work environments and raised institutional performance levels in many organizations.",
+      "Trained hundreds of employees and institutions in the latest leadership and technical skills, contributing to enhanced productivity and sustainable success."
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "contactForm": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "message": "Message",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastNamePlaceholder": "Enter your last name",
+    "emailPlaceholder": "info@******",
+    "phonePlaceholder": "5XXXXXXXX",
+    "messagePlaceholder": "Write your message",
+    "submit": "Send",
+    "sending": "Sending...",
+    "success": "Your message has been received",
+    "error": "An error occurred",
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "phoneInvalid": "Invalid phone number",
+    "messageInvalid": "Message must be at least 10 characters"
+  }
+}

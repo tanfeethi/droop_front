@@ -11,6 +11,7 @@ import { useFetchProgSliders } from "../hooks/programsSliders/useFetchProgSlider
 import { motion, AnimatePresence } from "framer-motion";
 import ProgramsSkeleton from "../components/once/skeletons/ProgramsSkeleton";
 import DOMPurify from "dompurify";
+import { useTranslation } from "react-i18next";
 
 interface SlideData {
   title: string;
@@ -19,6 +20,7 @@ interface SlideData {
 }
 
 const Programs = () => {
+  const { t, i18n } = useTranslation("programs"); // namespace: programs
   const { data: programsData } = useFetchProgSliders();
 
   const data: SlideData[] =
@@ -44,14 +46,12 @@ const Programs = () => {
 
   return (
     <>
-      <PagesHeroSection extraHeight="md:h-[600px]">
+      <PagesHeroSection extraHeight="md:h-[650px]">
         <div className="w-full mt-20 grid grid-cols-1 md:grid-cols-2">
           {/* === LEFT SIDE (Text + Buttons) === */}
           <div>
-            <h1 className="text-4xl font-bold mb-5">برامجنا المتخصصة</h1>
-            <p className="text-2xl font-normal mb-11">
-              نحرص على تقديم برامج مرنة تواكب احتياجات كلا من :
-            </p>
+            <h1 className="text-4xl font-bold mb-5">{t("hero.title")}</h1>
+            <p className="text-2xl font-normal mb-11">{t("hero.subtitle")}</p>
             <Divider />
 
             <div className="mt-11 flex flex-col items-center gap-8 md:flex-row">
@@ -72,16 +72,24 @@ const Programs = () => {
 
               <div className="bg-[#5785FF] p-2 rounded-full flex justify-between gap-5 px-5">
                 <button
-                  onClick={handleNext}
+                  onClick={i18n.language === "ar" ? handlePrev : handleNext}
                   className="border-2 border-[#274185] rounded-full h-8 w-8 flex items-center justify-center cursor-pointer"
                 >
-                  <IoArrowForwardOutline className="text-3xl text-[#274185]" />
+                  {i18n.language === "ar" ? (
+                    <IoArrowForwardOutline className="text-3xl text-[#274185]" />
+                  ) : (
+                    <IoArrowBack className="text-3xl" />
+                  )}
                 </button>
                 <button
-                  onClick={handlePrev}
+                  onClick={i18n.language === "ar" ? handleNext : handlePrev}
                   className="bg-[#274185] rounded-full h-8 w-8 flex items-center justify-center cursor-pointer"
                 >
-                  <IoArrowBack className="text-3xl" />
+                  {i18n.language === "ar" ? (
+                    <IoArrowBack className="text-3xl" />
+                  ) : (
+                    <IoArrowForwardOutline className="text-3xl " />
+                  )}
                 </button>
               </div>
             </div>
@@ -94,7 +102,7 @@ const Programs = () => {
                 }}
               >
                 <span className="flex items-center gap-5">
-                  رؤية التفاصيل
+                  {t("hero.detailsBtn")}
                   <MdKeyboardDoubleArrowDown className="bg-[#416AD7] rounded-full text-4xl p-1" />
                 </span>
               </RoundedButtton>
@@ -141,6 +149,8 @@ const Programs = () => {
               transition={{ duration: 0.5 }}
             >
               <Header
+                roundedSide={i18n.language === "ar" ? "left" : "right"}
+                spacing={i18n.language === "ar" ? "right-[10%]" : "left-[10%]"}
                 title={data[currentIndex].title}
                 subtitle={data[currentIndex].description}
               />

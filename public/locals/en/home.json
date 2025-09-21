@@ -1,3 +1,24 @@
 {
-    
+  "home": {
+    "about": {
+      "title": "Future Path Center for Training & Consulting",
+      "primaryButton": "About Us",
+      "secondaryButton": "Learn More"
+    },
+    "services": {
+      "title": "Our Training & Consulting Services",
+      "primaryButton": "Our Services",
+      "secondaryButton": "View All",
+      "description": "At Future Path Center, we provide comprehensive training and consulting solutions for individuals and organizations, including:"
+    },
+    "programs": {
+      "button": "Our Services",
+      "title": "Our Specialized Programs",
+      "description": "We are committed to offering flexible programs tailored to the needs of:"
+    },
+    "contact": {
+      "button": "Contact Us",
+      "description": "We are here to help you. If you have any questions about our services or need consultation, feel free to reach out via the form below or through direct contact methods."
+    }
+  }
 }

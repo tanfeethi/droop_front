@@ -3,17 +3,20 @@ import ServiceCard from "../components/reuse/Card/ServiceCard";
 import PagesHeroSection from "../components/reuse/hero/PagesHeroSection";
 import WrapperContainer from "../components/reuse/WrapperContainer";
 import { useFetchServices } from "../hooks/service/useFetchService";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation("service");
   const { data: serviceData } = useFetchServices();
+
   return (
     <>
       <PagesHeroSection
-        bgImage="/assets/images/image1.jpg"
+        bgImage="/assets/images/imag1.jpg"
         topOverlayColor="rgba(9, 1, 50, 0.52)"
       >
         <RoundedButtton
-          children="خدماتنا"
+          children={t("services.heroButton")}
           className="bg-white/20 p-3 h-fit w-[250px]"
         />
       </PagesHeroSection>
@@ -21,11 +24,10 @@ const Services = () => {
       <section className="w-full min-h-screen pt-10">
         <WrapperContainer>
           <h1 className="text-[#274185] text-4xl font-bold mb-3">
-            خدماتنا التدريبية الاستشارية
+            {t("services.title")}
           </h1>
           <p className="text-2xl font-normal mr-8">
-            نقدم في مركز دروب المستقبل حلولا تدريبية واستشارية شاملة للأفراد
-            والمؤسسات، تشمل:
+            {t("services.description")}
           </p>
           <div className="w-full mt-20">
             <div className="grid gap-12 mb-5 grid-cols-1 md:grid-cols-3 ">

@@ -1,5 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import apiClient from "../../utils/apiClient";
+import { useTranslation } from "react-i18next";
 
 // Main slider object (no "details" in the response)
 export interface ISlider {
@@ -22,18 +23,22 @@ export interface ISlidersResponse {
   code: number;
 }
 
-// Fetch function
-export const getHeroSliders = async (): Promise<ISlider[]> => {
-  const res = await apiClient.get<ISlidersResponse>("/api/frontend/hero");
-  return res.data.data; // return just the array
+// Fetch function with language
+export const getHeroSliders = async (lang: string): Promise<ISlider[]> => {
+  const res = await apiClient.get<ISlidersResponse>(
+    `/api/frontend/hero?lang=${lang}`
+  );
+  return res.data.data;
 };
 
 // React Query hook
 export const useFetchHeroSlider = () => {
+  const { i18n } = useTranslation();
+
   return useSuspenseQuery<ISlider[]>({
-    queryKey: ["heroSlider"],
-    queryFn: getHeroSliders,
-    staleTime: 5 * 60 * 1000, // fresh for 5 minutes
+    queryKey: ["heroSlider", i18n.language], // 👈 language included
+    queryFn: () => getHeroSliders(i18n.language),
+    staleTime: 5 * 60 * 1000,
     retry: 3,
     refetchOnWindowFocus: false,
   });

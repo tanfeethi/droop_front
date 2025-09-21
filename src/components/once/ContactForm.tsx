@@ -1,7 +1,9 @@
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 import useContactForm from "../../hooks/contactus/useContactForm";
+import i18n from "../../utils/i18n";
 
 interface ContactFormData {
   firstName: string;
@@ -19,13 +21,12 @@ interface ContactFormErrors {
   message?: string;
 }
 
-// ✅ Props for dynamic styles
 interface ContactFormProps {
-  labelColor?: string; // Example: "text-black" or "text-white"
-  inputBg?: string; // Example: "bg-gray-100"
-  buttonBg?: string; // Example: "bg-blue-600"
-  buttonHoverBg?: string; // Example: "hover:bg-blue-700"
-  buttonTextColor?: string; // Example: "text-white"
+  labelColor?: string;
+  inputBg?: string;
+  buttonBg?: string;
+  buttonHoverBg?: string;
+  buttonTextColor?: string;
   buttonWidth?: string;
   buttonExtraClasses?: string;
 }
@@ -39,6 +40,7 @@ const ContactForm = ({
   buttonWidth = "w-full",
   buttonExtraClasses = "",
 }: ContactFormProps) => {
+  const { t } = useTranslation("contactForm");
   const { mutate, isSuccess, isError, error, isPending } = useContactForm();
   const [form, setForm] = useState<ContactFormData>({
     firstName: "",
@@ -58,20 +60,22 @@ const ContactForm = ({
 
   const validate = (): ContactFormErrors => {
     let newErrors: ContactFormErrors = {};
-    if (!form.firstName.trim()) newErrors.firstName = "الاسم الاول مطلوب";
-    if (!form.lastName.trim()) newErrors.lastName = "الاسم الاخير مطلوب";
+    if (!form.firstName.trim())
+      newErrors.firstName = t("contactForm.firstNameRequired");
+    if (!form.lastName.trim())
+      newErrors.lastName = t("contactForm.lastNameRequired");
 
     if (!form.email.trim()) {
-      newErrors.email = "الايميل مطلوب";
+      newErrors.email = t("contactForm.emailRequired");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = "الايميل غير صحيح";
+      newErrors.email = t("contactForm.emailInvalid");
     }
 
     if (!/^[0-9]{8,12}$/.test(form.phone))
-      newErrors.phone = "رقم الهاتف غير صحيح";
+      newErrors.phone = t("contactForm.phoneInvalid");
 
     if (!form.message.trim() || form.message.length < 10)
-      newErrors.message = "الرسالة يجب أن تحتوي على 10 أحرف على الأقل";
+      newErrors.message = t("contactForm.messageInvalid");
 
     return newErrors;
   };
@@ -85,13 +89,12 @@ const ContactForm = ({
     }
     setErrors({});
 
-    // ✅ Transform to API structure
     const payload = {
       name: `${form.firstName} ${form.lastName}`,
       email: form.email,
       phone: form.phone,
-      subject: "Contact Form Submission", // or a field if you want subject input
-      massage: form.message, // notice your API expects "massage"
+      subject: "Contact Form Submission",
+      massage: form.message,
     };
 
     mutate(payload, {
@@ -114,14 +117,15 @@ const ContactForm = ({
         <div className="flex flex-col md:flex-row gap-4 mb-4">
           <div className="flex flex-col w-full">
             <label className={`${labelColor} font-medium mb-1`}>
-              الاسم الاول <span className="text-red-500">*</span>
+              {t("contactForm.firstName")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <input
               name="firstName"
               value={form.firstName}
               onChange={handleChange}
               type="text"
-              placeholder="اكتب اسمك الاول"
+              placeholder={t("contactForm.firstNamePlaceholder")}
               className={`p-4 rounded-md border ${inputBg} text-[#585858C9] border-gray-300 outline-none focus:border-blue-400`}
             />
             {errors.firstName && (
@@ -131,14 +135,15 @@ const ContactForm = ({
 
           <div className="flex flex-col w-full">
             <label className={`${labelColor} font-medium mb-1`}>
-              الاسم الاخير <span className="text-red-500">*</span>
+              {t("contactForm.lastName")}{" "}
+              <span className="text-red-500">*</span>
             </label>
             <input
               name="lastName"
               value={form.lastName}
               onChange={handleChange}
               type="text"
-              placeholder="اكتب اسمك الاخير"
+              placeholder={t("contactForm.lastNamePlaceholder")}
               className={`p-4 rounded-md border ${inputBg} text-[#585858C9] border-gray-300 outline-none focus:border-blue-400`}
             />
             {errors.lastName && (
@@ -150,14 +155,14 @@ const ContactForm = ({
         {/* Email */}
         <div className="flex flex-col mb-4">
           <label className={`${labelColor} font-medium mb-1`}>
-            البريد الاليكتروني <span className="text-red-500">*</span>
+            {t("contactForm.email")} <span className="text-red-500">*</span>
           </label>
           <input
             name="email"
             value={form.email}
             onChange={handleChange}
             type="email"
-            placeholder="info@******"
+            placeholder={t("contactForm.emailPlaceholder")}
             className={`p-4 rounded-md border ${inputBg} text-[#585858C9] border-gray-300 outline-none focus:border-blue-400`}
           />
           {errors.email && (
@@ -168,7 +173,7 @@ const ContactForm = ({
         {/* Phone */}
         <div className="flex flex-col mb-4">
           <label className={`${labelColor} font-medium mb-1`}>
-            رقم التواصل <span className="text-red-500">*</span>
+            {t("contactForm.phone")} <span className="text-red-500">*</span>
           </label>
           <div className="flex items-stretch border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:border-gray-300 transition-colors duration-200">
             <input
@@ -176,7 +181,7 @@ const ContactForm = ({
               value={form.phone}
               onChange={handleChange}
               type="tel"
-              placeholder="5XXXXXXXX"
+              placeholder={t("contactForm.phonePlaceholder")}
               className={`flex-1 px-4 py-3 outline-none ${inputBg} text-gray-700 placeholder-gray-400 focus:bg-gray-50 transition-colors duration-200`}
             />
             <div className="border-r-2 border-gray-200">
@@ -195,13 +200,13 @@ const ContactForm = ({
         {/* Message */}
         <div className="flex flex-col mb-6">
           <label className={`${labelColor} font-medium mb-1`}>
-            رسالتك <span className="text-red-500">*</span>
+            {t("contactForm.message")} <span className="text-red-500">*</span>
           </label>
           <textarea
             name="message"
             value={form.message}
             onChange={handleChange}
-            placeholder="اكتب رسالتك"
+            placeholder={t("contactForm.messagePlaceholder")}
             rows={4}
             className={`p-4 rounded-md border ${inputBg} text-[#585858C9] border-gray-300 outline-none focus:border-blue-400`}
           />
@@ -216,17 +221,19 @@ const ContactForm = ({
           type="submit"
           className={`${buttonWidth} ${buttonBg} ${buttonHoverBg} ${buttonTextColor} ${buttonExtraClasses} font-medium py-3 rounded-md transition cursor-pointer flex items-center`}
         >
-          {isPending ? "جاري الارسال..." : "ارسال"}
-          <IoIosArrowBack />
+          {isPending ? t("contactForm.sending") : t("contactForm.submit")}
+          <span className={`${i18n.language === "en" && "rotate-180"}`}>
+            <IoIosArrowBack />
+          </span>
         </button>
         {isSuccess && (
           <div className="bg-green-200 p-3 mt-5 text-center rounded-lg text-green-900">
-            تم استلام رسالتك
+            {t("contactForm.success")}
           </div>
         )}
         {isError && (
           <div className="bg-red-200 p-3 mt-5 text-center rounded-lg text-red-900">
-            {error.response?.data.error || "حدث خطأ ما"}
+            {error.response?.data.error || t("contactForm.error")}
           </div>
         )}
       </form>

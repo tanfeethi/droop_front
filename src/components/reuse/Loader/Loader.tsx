@@ -1,62 +1,6 @@
-import React, { useEffect, type ReactNode } from "react";
+import { useEffect } from "react";
 
-interface FullScreenLoaderProps {
-  message?: ReactNode;
-  subMessage?: ReactNode;
-  showLogo?: boolean;
-}
-
-const FullScreenLoader = ({
-  message = "جارٍ التحميل...",
-  subMessage = "يرجى الانتظار قليلاً",
-}: FullScreenLoaderProps) => {
-  return (
-    <div className="min-h-screen absolute w-full flex items-center justify-center z-50 bg-gradient-to-br from-[#00103B] via-blue-800 to-[#274185]">
-      {/* Background Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full transform translate-x-32 -translate-y-32"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full transform -translate-x-16 translate-y-16"></div>
-        <div className="absolute top-1/2 left-1/3 w-48 h-48 bg-blue-300 rounded-full transform -translate-y-1/2"></div>
-      </div>
-
-      {/* Geometric Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-2 h-32 bg-white opacity-20 transform rotate-45"></div>
-        <div className="absolute bottom-32 left-16 w-2 h-24 bg-blue-300 opacity-30 transform -rotate-12"></div>
-        <div className="absolute top-1/3 right-1/4 w-1 h-20 bg-white opacity-15 transform rotate-75"></div>
-      </div>
-
-      <div className="text-center relative z-10">
-        {/* Loading Animation */}
-        <div className="mb-8">
-          <div className="relative w-16 h-16 mx-auto">
-            {/* Outer rotating ring */}
-            <div className="absolute inset-0 border-4 border-blue-300 border-t-orange-400 rounded-full animate-spin"></div>
-            {/* Inner pulsing circle */}
-            <div className="absolute inset-2 bg-orange-400 rounded-full animate-pulse opacity-80"></div>
-            {/* Center dot */}
-            <div className="absolute inset-6 bg-white rounded-full"></div>
-          </div>
-        </div>
-
-        {/* Loading Text */}
-        <div className="space-y-3">
-          <h2 className="text-2xl font-semibold text-white">{message}</h2>
-          <p className="text-blue-200 text-lg">{subMessage}</p>
-        </div>
-
-        {/* Progress Indicator */}
-        <div className="mt-8">
-          <div className="w-64 h-1 bg-blue-700 rounded-full mx-auto overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-orange-400 to-orange-500 rounded-full animate-pulse"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Loader = () => {
+const PulseLoader = () => {
   useEffect(() => {
     // Disable scroll
     document.body.style.overflow = "hidden";
@@ -67,44 +11,24 @@ const Loader = () => {
     };
   }, []);
 
-  const [currentDemo, setCurrentDemo] = React.useState(0);
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#314373] to-[#171A46] text-white">
+      {/* Pulsing Rings */}
+      <div className="relative w-24 h-24 flex items-center justify-center">
+        <div className="absolute w-24 h-24 rounded-full border-4 border-[#ffffff40] animate-ping"></div>
+        <div className="absolute w-24 h-24 rounded-full border-4 border-[#ffffff70] animate-pulse"></div>
+        <div className="w-12 h-12 rounded-full bg-white shadow-lg"></div>
+      </div>
 
-  const demos = [
-    {
-      component: <FullScreenLoader />,
-      title: "التصميم الأساسي",
-    },
-    {
-      component: (
-        <FullScreenLoader
-          message="جاري تجهيز موقعك..."
-          subMessage="يتم إعداد تجربتك التعليمية المخصصة"
-          showLogo={true}
-        />
-      ),
-      title: "تحميل موقعك",
-    },
-    {
-      component: (
-        <FullScreenLoader
-          message="جاري تحميل الدورات التدريبية..."
-          subMessage="يتم إعداد المحتوى التعليمي"
-          showLogo={false}
-        />
-      ),
-      title: "تحميل المحتوى",
-    },
-  ];
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentDemo((prev) => (prev + 1) % demos.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return <div className="relative">{demos[currentDemo].component}</div>;
+      {/* Website Name */}
+      <h1 className="mt-6 text-2xl md:text-3xl font-bold tracking-wide animate-fadeIn">
+        دروب المستقبل
+      </h1>
+      <p className="mt-2 text-sm opacity-80 animate-fadeIn delay-500">
+        استعد للمستقبل بخطوات واثقة
+      </p>
+    </div>
+  );
 };
 
-export default Loader;
+export default PulseLoader;

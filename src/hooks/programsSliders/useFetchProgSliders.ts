@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../utils/apiClient";
+import { useTranslation } from "react-i18next";
 
 // Detail item inside each program slider
 export interface ISliderDetail {
@@ -40,8 +41,9 @@ export const getSliders = async () => {
 
 // React Query hook
 export const useFetchProgSliders = () => {
+  const { i18n } = useTranslation();
   return useQuery({
-    queryKey: ["programs"],
+    queryKey: ["programs", i18n.language],
     queryFn: getSliders,
     staleTime: 5 * 60 * 1000, // Data will be considered fresh for 5 minutes
     retry: 3,

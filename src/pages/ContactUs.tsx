@@ -6,8 +6,13 @@ import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
 import { BsSnapchat } from "react-icons/bs";
 import PagesHeroSection from "../components/reuse/hero/PagesHeroSection";
+import { useTranslation } from "react-i18next";
+import { useFetchSettings } from "../hooks/settings/useFetchSettings";
 
 const ContactUs = () => {
+  const { t } = useTranslation("contact");
+  const { data } = useFetchSettings();
+
   return (
     <>
       <PagesHeroSection>
@@ -15,10 +20,9 @@ const ContactUs = () => {
           <div className="text-white">
             <div className="grid grid-cols-2 h-full">
               <div className="h-full flex items-center justify-start">
-                <RoundedButtton
-                  children="تواصل معنا"
-                  className="bg-white/30 "
-                />
+                <RoundedButtton className="bg-white/30 ">
+                  {t("contactUs.heroButton")}
+                </RoundedButtton>
               </div>
               <div className="h-full flex items-center justify-center">
                 <img
@@ -37,13 +41,9 @@ const ContactUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="">
               <h1 className="text-4xl text-[#00103B] font-extrabold mb-6">
-                ابقي علي تواصل !
+                {t("contactUs.title")}
               </h1>
-              <p>
-                نحن هنا لمساعدتك. إذا كان لديك أي استفسار حول خدماتنا أو تحتاج
-                إلى استشارة، لا تتردد في التواصل معنا عبر النموذج أدناه أو
-                بوسائل الاتصال المباشرة.
-              </p>
+              <p>{t("contactUs.description")}</p>
               <div className="mt-5">
                 <ContactForm
                   inputBg="bg-[#F0F0F0]"
@@ -57,6 +57,7 @@ const ContactUs = () => {
           </div>
         </WrapperContainer>
       </section>
+
       <section
         className="h-[550px] overflow-hidden w-full bg-center bg-cover flex flex-col justify-end p-4"
         style={{
@@ -71,33 +72,47 @@ const ContactUs = () => {
             <div>
               <div className="flex items-center text-4xl gap-8 mb-20">
                 <BiSolidLeftArrow />
-                <h3>تابعونا علي</h3>
+                <h3>{t("contactUs.followUs")}</h3>
               </div>
               <div className="flex text-3xl gap-14 md:text-6xl">
-                <FaXTwitter />
-                <AiFillInstagram />
-                <BsSnapchat />
-                <FaLinkedinIn />
+                <FaXTwitter
+                  className="cursor-pointer transition-all duration-500 hover:text-white/30"
+                  onClick={() => window.open(data?.social_media.x, "_blank")}
+                />
+                <AiFillInstagram
+                  className="cursor-pointer transition-all duration-500 hover:text-white/30"
+                  onClick={() =>
+                    window.open(data?.social_media.instagram, "_blank")
+                  }
+                />
+                <BsSnapchat
+                  className="cursor-pointer transition-all duration-500 hover:text-white/30"
+                  onClick={() =>
+                    window.open(data?.social_media.facebook, "_blank")
+                  }
+                />
+                <FaLinkedinIn
+                  className="cursor-pointer transition-all duration-500 hover:text-white/30"
+                  onClick={() =>
+                    window.open(data?.social_media.tiktok, "_blank")
+                  }
+                />
               </div>
             </div>
             <div className="flex gap-6 flex-col md:justify-end md:text-left">
               <div className="flex flex-col">
-                <span className="text-lg mb-8 md:text-3xl">رقم التواصل</span>
-                <span className="text-xl font-bold md:text-4xl">
-                  0x00000000000
+                <span className="text-lg mb-8 md:text-3xl">
+                  {t("contactUs.contactNumber")}
                 </span>
-              </div>
-
-              <div className="flex flex-col">
-                <span className="text-lg mb-8 md:text-3xl">الفاكس</span>
                 <span className="text-xl font-bold md:text-4xl">
-                  011-2936421
+                  {data?.phones[0]}
                 </span>
               </div>
             </div>
           </div>
         </WrapperContainer>
       </section>
+
       <section>
         <div>
           <iframe

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../../utils/apiClient";
+import { useTranslation } from "react-i18next";
 
 // Service item
 export interface IService {
@@ -25,8 +26,9 @@ export const getServices = async () => {
 
 // React Query hook
 export const useFetchServices = () => {
+  const { i18n } = useTranslation();
   return useQuery({
-    queryKey: ["services"],
+    queryKey: ["services", i18n.language],
     queryFn: getServices,
     staleTime: 5 * 60 * 1000, // Data will be considered fresh for 5 minutes
     retry: 3,

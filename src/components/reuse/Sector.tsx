@@ -34,11 +34,11 @@ const Sector: React.FC<SectorProps> = ({
       <div>
         <NumberDisplay number={number} strokeColor={strokeColor} size={size} />
 
-        <div className="text-right justify-start text-[#00103B] text-4xl font-bold mb-5">
+        <div className=" justify-start text-[#00103B] text-4xl font-bold mb-5">
           {DOMPurify.sanitize(title, { ALLOWED_TAGS: [] })}
         </div>
 
-        <div className="text-right justify-start text-slate-900 text-xl font-normal font-['Almarai'] capitalize leading-normal">
+        <div className=" justify-start text-slate-900 text-xl font-normal font-['Almarai'] capitalize leading-normal">
           {DOMPurify.sanitize(description, { ALLOWED_TAGS: [] })}
         </div>
       </div>

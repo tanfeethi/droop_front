@@ -3,6 +3,7 @@ import { TbArrowLeftDashed } from "react-icons/tb";
 import RoundedButtton from "./Buttons/RoundedButtton";
 import CustomButton from "./Buttons/CustomButton";
 import DOMPurify from "dompurify";
+import { useTranslation } from "react-i18next";
 
 interface SectionWithButtonsProps {
   title: string;
@@ -27,6 +28,7 @@ const SectionWithButtons: React.FC<SectionWithButtonsProps> = ({
   reverse = false,
   className = "",
 }) => {
+  const { i18n } = useTranslation();
   return (
     <div
       className={`flex flex-col md:flex-row ${
@@ -54,7 +56,9 @@ const SectionWithButtons: React.FC<SectionWithButtonsProps> = ({
         >
           <span className="flex items-center gap-4">
             <span>{secondaryButtonText}</span>
-            {icon}
+            <span className={`${i18n.language === "en" && "rotate-180"}`}>
+              {icon}
+            </span>
           </span>
         </CustomButton>
       </div>

@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router";
-// import { useTranslation } from "react-i18next";
-// import { changeLanguage } from "../../utils/i18n";
+import { useTranslation } from "react-i18next";
+import { changeLanguage } from "../../utils/i18n";
 import { FaRegDotCircle, FaBars, FaTimes } from "react-icons/fa";
-// import { TbRefresh } from "react-icons/tb";
+import { TbRefresh } from "react-icons/tb";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  // const { i18n } = useTranslation("nav");
+  const { t, i18n } = useTranslation("nav");
 
-  // const toggleLanguage = () => {
-  //   const newLang = i18n.language === "en" ? "ar" : "en";
-  //   changeLanguage(newLang);
-  // };
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "ar" : "en";
+    changeLanguage(newLang);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,11 +50,15 @@ const Navbar: React.FC = () => {
                 to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    ? `text-white text-2xl p-2 font-bold rounded-full ${
+                        i18n.language === "ar"
+                          ? "custom-underline-left"
+                          : "custom-underline-right"
+                      }`
                     : "text-white/70 text-2xl p-2 hover:text-white"
                 }
               >
-                الرئيسية
+                {t("home")}
               </NavLink>
             </li>
             <li>
@@ -62,50 +66,63 @@ const Navbar: React.FC = () => {
                 to="/about"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    ? `text-white text-2xl p-2 font-bold rounded-full ${
+                        i18n.language === "ar"
+                          ? "custom-underline-left"
+                          : "custom-underline-right"
+                      }`
                     : "text-white/70 text-2xl p-2 hover:text-white"
                 }
               >
-                من نحن
+                {t("about")}
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/Corporate_consulting"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    ? `text-white text-2xl p-2 font-bold rounded-full ${
+                        i18n.language === "ar"
+                          ? "custom-underline-left"
+                          : "custom-underline-right"
+                      }`
                     : "text-white/70 text-2xl p-2 hover:text-white"
                 }
               >
-                الاستشارات المؤسسية
+                {t("corporateConsulting")}
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/services"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    ? `text-white text-2xl p-2 font-bold rounded-full ${
+                        i18n.language === "ar"
+                          ? "custom-underline-left"
+                          : "custom-underline-right"
+                      }`
                     : "text-white/70 text-2xl p-2 hover:text-white"
                 }
               >
-                خدماتنا
+                {t("services")}
               </NavLink>
             </li>
-
             <li>
               <NavLink
                 to="/programs"
                 className={({ isActive }) =>
                   isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
+                    ? `text-white text-2xl p-2 font-bold rounded-full ${
+                        i18n.language === "ar"
+                          ? "custom-underline-left"
+                          : "custom-underline-right"
+                      }`
                     : "text-white/70 text-2xl p-2 hover:text-white"
                 }
               >
-                برامجنا
+                {t("programs")}
               </NavLink>
             </li>
           </ul>
@@ -116,11 +133,11 @@ const Navbar: React.FC = () => {
           <NavLink to="/contact-us">
             <button className="px-5 py-2 bg-[#274185] text-white text-xl rounded-full flex items-center gap-3 cursor-pointer">
               <FaRegDotCircle />
-              تواصل معنا
+              {t("contact")}
             </button>
           </NavLink>
 
-          {/* <button
+          <button
             onClick={toggleLanguage}
             className="group bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1 cursor-pointer"
           >
@@ -131,9 +148,9 @@ const Navbar: React.FC = () => {
             />
             <FaRegDotCircle className="text-white" />
             <span className="text-lg">
-              {i18n.language === "en" ? "ع" : "EN"}
+              {i18n.language === "en" ? t("langSwitchAr") : t("langSwitch")}
             </span>
-          </button> */}
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -152,82 +169,27 @@ const Navbar: React.FC = () => {
         <div className="fixed top-16 left-0 w-full bg-[#00103A] text-black z-[999] shadow-md lg:hidden ">
           <ul className="flex flex-col items-center text-lg font-medium px-6 py-4 space-y-4">
             <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
-                    : "text-white/70 text-2xl p-2 hover:text-white"
-                }
-              >
-                الرئيسية
+              <NavLink to="/">{t("home")}</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">{t("about")}</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Corporate_consulting">
+                {t("corporateConsulting")}
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
-                    : "text-white/70 text-2xl p-2 hover:text-white"
-                }
-              >
-                من نحن
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/Corporate_consulting"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
-                    : "text-white/70 text-2xl p-2 hover:text-white"
-                }
-              >
-                الاستشارات المؤسسية
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
-                    : "text-white/70 text-2xl p-2 hover:text-white"
-                }
-              >
-                خدماتنا
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
-                to="/programs"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
-                    : "text-white/70 text-2xl p-2 hover:text-white"
-                }
-              >
-                برامجنا
-              </NavLink>
+              <NavLink to="/services">{t("services")}</NavLink>
             </li>
             <li>
-              <NavLink
-                to="/contact-us"
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-white text-2xl p-2 font-bold custom-underline-left rounded-full"
-                    : "text-white/70 text-2xl p-2 hover:text-white"
-                }
-              >
-                تواصل معنا
-              </NavLink>
+              <NavLink to="/programs">{t("programs")}</NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact-us">{t("contact")}</NavLink>
             </li>
           </ul>
-          {/* <div className="w-full flex items-center justify-center flex-col gap-4">
+          <div className="w-full flex items-center justify-center flex-col gap-4">
             <button
               onClick={toggleLanguage}
               className="group bg-[#FFFFFF1F]/90 rounded-full flex items-center font-bold text-white border-white gap-3 border-2 px-2 py-1 cursor-pointer"
@@ -238,10 +200,10 @@ const Navbar: React.FC = () => {
                group-hover:rotate-45"
               />
               <span className="text-lg">
-                {i18n.language === "en" ? "ع" : "EN"}
+                {i18n.language === "en" ? t("langSwitchAr") : t("langSwitch")}
               </span>
             </button>
-          </div> */}
+          </div>
         </div>
       )}
     </nav>

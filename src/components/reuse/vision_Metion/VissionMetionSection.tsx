@@ -6,7 +6,7 @@ const VissionMetionSection = () => {
   const vissionData = data?.find((item) => item.name === "vision");
   const missionData = data?.find((item) => item.name === "mission");
   return (
-    <div className=" w-full mt-20 flex items-center">
+    <div className=" w-full mt-20 flex items-center gap-10">
       <div className="  flex flex-col gap-14 md:w-[60%]">
         <AboutRoundedComponent
           title={vissionData?.title || ""}

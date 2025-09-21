@@ -1,0 +1,24 @@
+{
+  "contactForm": {
+    "firstName": "الاسم الاول",
+    "lastName": "الاسم الاخير",
+    "email": "البريد الالكتروني",
+    "phone": "رقم التواصل",
+    "message": "رسالتك",
+    "firstNamePlaceholder": "اكتب اسمك الاول",
+    "lastNamePlaceholder": "اكتب اسمك الاخير",
+    "emailPlaceholder": "info@******",
+    "phonePlaceholder": "5XXXXXXXX",
+    "messagePlaceholder": "اكتب رسالتك",
+    "submit": "ارسال",
+    "sending": "جاري الارسال...",
+    "success": "تم استلام رسالتك",
+    "error": "حدث خطأ ما",
+    "firstNameRequired": "الاسم الاول مطلوب",
+    "lastNameRequired": "الاسم الاخير مطلوب",
+    "emailRequired": "الايميل مطلوب",
+    "emailInvalid": "الايميل غير صحيح",
+    "phoneInvalid": "رقم الهاتف غير صحيح",
+    "messageInvalid": "الرسالة يجب أن تحتوي على 10 أحرف على الأقل"
+  }
+}

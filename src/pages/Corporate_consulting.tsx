@@ -4,55 +4,45 @@ import Header from "../components/reuse/header/Header";
 import PagesHeroSection from "../components/reuse/hero/PagesHeroSection";
 import WrapperContainer from "../components/reuse/WrapperContainer";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import i18n from "../utils/i18n";
 
 const Corporate_consulting = () => {
-  const servicesData = [
-    {
-      title: "إعادة الهيكلة اإلدارية:",
-      description:
-        "تطوير الهياكل اإلدارية بما يتناسب مع احتياجات المؤسسة ويحقق أقصى استفادة من الموارد.",
-      imageUrl: "/assets/images/image1.webp",
-    },
-    {
-      title: "رفع كفاءة اإلنتاجية:",
-      description:
-        "تحسين العمليات الداخلية لزيادة الكفاءة اإلنتاجية وتحقيق نتائج ملموسة.",
-      imageUrl: "/assets/images/image2.webp",
-    },
-    {
-      title: "تطوير السياسات والإجراءات:",
-      description:
-        "تقديم استشارات لتطوير السياسات والإجراءات بما يتوافق مع أفضل الممارسات العالمية.",
-      imageUrl: "/assets/images/service1.webp",
-    },
-    {
-      title: "إدارة التغيير والتحول المؤسسي:",
-      description:
-        "دعم المؤسسات في عمليات التغيير والتحول المؤسسي لضمان استدامة النجاح والنمو.",
-      imageUrl: "/assets/images/service2.webp",
-    },
+  const { t } = useTranslation("corporate");
+
+  // services come from translation files
+  const servicesData = t("corporateConsulting.services", {
+    returnObjects: true,
+  }) as { title: string; description: string; imageUrl?: string }[];
+
+  // add static images while keeping texts from translation
+  const servicesWithImages = [
+    { ...servicesData[0], imageUrl: "/assets/images/coop1.webp" },
+    { ...servicesData[1], imageUrl: "/assets/images/image2.webp" },
+    { ...servicesData[2], imageUrl: "/assets/images/service1.webp" },
+    { ...servicesData[3], imageUrl: "/assets/images/service2.webp" },
   ];
 
-  // Default selected = first service
-  const [selectedService, setSelectedService] = useState(servicesData[0]);
+  const [selectedService, setSelectedService] = useState(servicesWithImages[0]);
 
   return (
     <>
       <PagesHeroSection
-        bgImage="/assets/images/image1.jpg"
+        bgImage="/assets/images/imag1.jpg"
         topOverlayColor="rgba(9, 1, 50, 0.52)"
       >
-        <RoundedButtton
-          children="الاستشارات المؤسسية"
-          className="bg-white/20 p-3 h-fit"
-        />
+        <RoundedButtton className="bg-white/20 p-3 h-fit">
+          {t("corporateConsulting.heroButton")}
+        </RoundedButtton>
       </PagesHeroSection>
 
       <section className="w-full h-[150px] mt-20 mb-15 md:mb-0">
         <div className="relative">
           <Header
-            title="الاستشارات المؤسسية"
-            subtitle="نقدم برامج تدريبية تهدف إلى تمكين الأفراد من تطوير مهاراتهم الذاتية والتقنية:"
+            spacing={i18n.language === "ar" ? "right-[10%]" : "left-[10%]"}
+            roundedSide={i18n.language === "ar" ? "left" : "right"}
+            title={t("corporateConsulting.headerTitle")}
+            subtitle={t("corporateConsulting.headerSubtitle")}
           />
         </div>
       </section>
@@ -62,7 +52,7 @@ const Corporate_consulting = () => {
           {/* Content Side */}
           <div className="w-full flex md:w-[70%] relative">
             <div className="flex flex-col gap-y-12 w-full relative">
-              {servicesData.map((service, idx) => {
+              {servicesWithImages.map((service, idx) => {
                 const isActive = selectedService.title === service.title;
                 return (
                   <div
@@ -70,7 +60,7 @@ const Corporate_consulting = () => {
                     className="relative cursor-pointer w-full"
                     onClick={() => setSelectedService(service)}
                   >
-                    {/* Background highlight that moves */}
+                    {/* Background highlight */}
                     {isActive && (
                       <motion.div
                         layoutId="highlight"
@@ -102,7 +92,7 @@ const Corporate_consulting = () => {
             </div>
           </div>
 
-          {/* Image Side (no animation) */}
+          {/* Image Side */}
           <div className="hidden w-[35%] flex-shrink-0 md:block">
             <div className="h-full bg-[#00103B] rounded-2xl p-5">
               <img

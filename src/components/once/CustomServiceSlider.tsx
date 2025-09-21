@@ -12,6 +12,7 @@ import { useFetchProgSliders } from "../../hooks/programsSliders/useFetchProgSli
 import ServiceSliderSKL from "./skeletons/ServiceSliderSKL";
 import DOMPurify from "dompurify";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 interface SlideData {
   title: string;
@@ -20,6 +21,7 @@ interface SlideData {
 }
 
 const CustomServiceSlider = () => {
+  const { i18n } = useTranslation();
   const { data: programsData } = useFetchProgSliders();
   const navigate = useNavigate();
 
@@ -223,7 +225,9 @@ const CustomServiceSlider = () => {
                   whileTap="tap"
                   className="w-full bg-[#00103B] rounded-xl text-white py-3 md:py-3.5 mt-4 flex justify-center items-center gap-2 cursor-pointer"
                 >
-                  <span className="text-lg md:text-2xl">اكتشف المزيد</span>
+                  <span className="text-lg md:text-2xl">
+                    {i18n.language === "en" ? "Discover More" : "اكتشف المزيد"}
+                  </span>
                 </motion.button>
               </motion.div>
             </motion.div>
@@ -231,25 +235,28 @@ const CustomServiceSlider = () => {
 
           {/* Controls */}
           <div className="flex w-full items-center justify-center gap-3.5 mt-4 md:mt-6">
+            {/* Prev Button */}
             <motion.div
-              onClick={handlePrev}
+              onClick={i18n.language === "ar" ? handlePrev : handleNext}
               className="bg-[#274185] rounded-full w-12 h-12 md:w-[50px] md:h-[50px] text-white flex items-center justify-center cursor-pointer"
               variants={buttonVariants}
               initial="idle"
               whileHover="hover"
               whileTap="tap"
             >
-              <MdArrowForward />
+              {i18n.language === "ar" ? <MdArrowForward /> : <MdArrowBack />}
             </motion.div>
+
+            {/* Next Button */}
             <motion.div
-              onClick={handleNext}
+              onClick={i18n.language === "ar" ? handleNext : handlePrev}
               className="border border-[#274185] rounded-full w-12 h-12 md:w-[50px] md:h-[50px] flex items-center justify-center cursor-pointer"
               variants={buttonVariants}
               initial="idle"
               whileHover="hover"
               whileTap="tap"
             >
-              <MdArrowBack />
+              {i18n.language === "ar" ? <MdArrowBack /> : <MdArrowForward />}
             </motion.div>
           </div>
         </div>

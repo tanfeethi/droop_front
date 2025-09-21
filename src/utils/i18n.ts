@@ -1,13 +1,48 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import { homeEn, homeAr } from "../../public/locals";
+import {
+  homeEn,
+  homeAr,
+  navAr,
+  navEn,
+  contactFormAr,
+  contactFormEn,
+  footerAr,
+  footerEn,
+  aboutAr,
+  aboutEn,
+  corporateAr,
+  corporateEn,
+  serviceAr,
+  serviceEn,
+  programsAr,
+  programsEn,
+  contactAr,
+  contactEn,
+} from "../../public/locals";
 
 const resources = {
   en: {
-    header: homeEn,
+    home: homeEn,
+    nav: navEn,
+    footer: footerEn,
+    contactForm: contactFormEn,
+    about: aboutEn,
+    corporate: corporateEn,
+    service: serviceEn,
+    programs: programsEn,
+    contact: contactEn,
   },
   ar: {
-    header: homeAr,
+    home: homeAr,
+    nav: navAr,
+    footer: footerAr,
+    contactForm: contactFormAr,
+    about: aboutAr,
+    corporate: corporateAr,
+    service: serviceAr,
+    programs: programsAr,
+    contact: contactAr,
   },
 } as const;
 

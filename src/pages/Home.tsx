@@ -10,12 +10,14 @@ import ImageCard from "../components/reuse/Card/ImageCard";
 import { useNavigate } from "react-router";
 import { useFetchServices } from "../hooks/service/useFetchService";
 import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const navigate = useNavigate();
   const { data: servicesData } = useFetchServices();
   const { data: staticData } = useFetchStaticPages();
   const aboutData = staticData?.find((item) => item.name === "about_us");
+  const { t, i18n } = useTranslation("home");
 
   return (
     <>
@@ -26,9 +28,9 @@ const Home = () => {
             onPrimaryClick={() => {
               navigate("/about");
             }}
-            title="مركز دروب المستقبل للتدريب و الاستشارات"
-            primaryButtonText="من نحن"
-            secondaryButtonText="تعرف علينا"
+            title={t("home.about.title")}
+            primaryButtonText={t("home.about.primaryButton")}
+            secondaryButtonText={t("home.about.secondaryButton")}
             description={aboutData?.text || ""}
           />
 
@@ -44,16 +46,16 @@ const Home = () => {
       <section className="bg-[#F6F9FF] pt-28">
         <WrapperContainer>
           <SectionWithButtons
-            title="خدماتنا التدريبية الاستشارية"
-            primaryButtonText="خدماتنا"
+            title={t("home.services.title")}
+            primaryButtonText={t("home.services.primaryButton")}
             onPrimaryClick={() => {
               navigate("/services");
             }}
             onSecondaryClick={() => {
               navigate("/services");
             }}
-            secondaryButtonText="رؤية الكل"
-            description="نقدم في مركز دروب المستقبل حلولا تدريبية واستشارية شاملة للأفراد والمؤسسات، تشمل:"
+            secondaryButtonText={t("home.services.secondaryButton")}
+            description={t("home.services.description")}
           />
 
           <div className="w-full mt-20">
@@ -72,14 +74,14 @@ const Home = () => {
       </section>
 
       <section className="w-full mt-16 text-center flex flex-col items-center justify-center mb-20">
-        <RoundedButtton
-          onClick={() => navigate("/services")}
-          className="mb-9"
-          children={<span className="px-7">خدماتنا</span>}
-        />
-        <h2 className="font-bold text-4xl text-[#274185]">برامجنا المتخصصة</h2>
+        <RoundedButtton onClick={() => navigate("/services")} className="mb-9">
+          <span className="px-7">{t("home.programs.button")}</span>
+        </RoundedButtton>
+        <h2 className="font-bold text-4xl text-[#274185]">
+          {t("home.programs.title")}
+        </h2>
         <p className="text-2xl font-normal mt-5">
-          نحرص على تقديم برامج مرنة تواكب احتياجات كلا من :
+          {t("home.programs.description")}
         </p>
 
         <div className="mt-12 w-full">
@@ -97,26 +99,32 @@ const Home = () => {
       <section className="w-full bg-[#F4F7FF] flex flex-col md:flex-row ">
         <div className="bg-[#F4F7FF] pt-14 md:w-[40%]">
           <div className="md:w-[80%] m-auto">
-            <RoundedButtton
-              className="mb-10"
-              children={<span className="px-5">تواصل معنا</span>}
-              type="button"
-            />
+            <RoundedButtton className="mb-10" type="button">
+              <span className="px-5">{t("home.contact.button")}</span>
+            </RoundedButtton>
             <p className="text-lg font-normal text-[#000000] mb-26 md:w-[60%]">
-              نحن هنا لمساعدتك. إذا كان لديك أي استفسار حول خدماتنا أو تحتاج إلى
-              استشارة، لا تتردد في التواصل معنا عبر النموذج أدناه أو بوسائل
-              الاتصال المباشرة.
+              {t("home.contact.description")}
             </p>
           </div>
           <div className="relative hidden md:block">
-            <div className="h-64 w-64 absolute -translate-x-1/2 -translate-y-1/3">
+            <div
+              className={`h-64 w-64 absolute ${
+                i18n.language === "ar"
+                  ? "-translate-x-1/2 -translate-y-1/3"
+                  : "translate-x-2/3 -translate-y-1/3"
+              } `}
+            >
               <img
                 src="/assets/images/HeadPhone.webp"
                 alt=""
                 className="w-full h-full transform -scale-x-100"
               />
             </div>
-            <div className="w-1/2 bg-[#274185] h-40 rounded-l-full"></div>
+            <div
+              className={`w-1/2 bg-[#274185] h-40 ${
+                i18n.language === "ar" ? "rounded-l-full" : "rounded-r-full"
+              } `}
+            ></div>
           </div>
         </div>
 

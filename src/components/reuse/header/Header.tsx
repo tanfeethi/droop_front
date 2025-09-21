@@ -11,6 +11,7 @@ interface HeaderProps {
   roundedSide?: "left" | "right"; // choose which side to round
   titleColor?: string;
   subtitleColor?: string;
+  spacing?: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -22,14 +23,15 @@ const Header: React.FC<HeaderProps> = ({
   roundedSide = "left",
   titleColor = "text-[#00103B]",
   subtitleColor = "text-slate-900",
+  spacing = "right-[10%]",
 }) => {
   const roundedClass =
-    roundedSide === "left" ? "rounded-l-[64px]" : "rounded-r-[64px]";
+    roundedSide === "left" ? "rounded-l-full" : "rounded-r-full";
 
   return (
     <div className={`${width} ${height} ${bgColor} ${roundedClass}`}>
       <WrapperContainer>
-        <span className="absolute top-6 right-[10%] flex flex-col md:top-6">
+        <span className={`absolute top-6 ${spacing} flex flex-col md:top-6`}>
           <span
             className={`text-3xl font-bold mb-12 ${titleColor} md:text-5xl md:mb-8`}
           >

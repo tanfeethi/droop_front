@@ -11,29 +11,19 @@ import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
 import { FaHandsHelping } from "react-icons/fa";
 import { HiMiniRectangleGroup } from "react-icons/hi2";
 import DOMPurify from "dompurify";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation("about");
   const { data: staticData } = useFetchStaticPages();
   const aboutData = staticData?.find((item) => item.name === "about_us");
 
-  const achivementData = [
-    {
-      description:
-        "نفيذ أكثر من 30 برنام ًجا تدريبًيا في قطاعات متنوعة، مما ساهم في تطوير مهارات األفراد ورفع كفاءة المؤسسات",
-    },
-    {
-      description:
-        "شراكات استراتيجية ناجحة مع الجهات الحكومية والخاصة، بما في ذلك التعاون مع بلدية الخرج، مما عزز من تأثير برامجنا",
-    },
-    {
-      description:
-        "تقديم استشارات استراتيجية ح ّسنت بيئات العمل ورفعت مستويات األداء المؤسسي في العديد من المؤسسات",
-    },
-    {
-      description:
-        "تدريب مئات الموظفين والمؤسسات على أحدث المهارات القيادية والفنية، مما أسهم في تعزيز اإلنتاجية وتحقيق النجاح المستدام",
-    },
-  ];
+  // Ensure achievements is always an array
+  const achivementData = t("about.achievements", {
+    returnObjects: true,
+  }) as unknown as string[];
+
+  const achievementsArray = Array.isArray(achivementData) ? achivementData : [];
 
   return (
     <>
@@ -42,7 +32,7 @@ const About = () => {
         topOverlayColor="rgba(9, 1, 50, 0.52)"
       >
         <RoundedButtton
-          children="من نحن"
+          children={t("about.hero_button")}
           className="bg-white/20 p-3 h-fit w-[250px]"
         />
       </PagesHeroSection>
@@ -50,7 +40,7 @@ const About = () => {
       <section className="mt-14">
         <WrapperContainer>
           <h1 className="text-4xl text-[#274185] font-extrabold mb-10">
-            مركز دروب المستقبل للتدريب و الاستشارات
+            {t("about.title")}
           </h1>
           <p className="w-[98%]">
             <span className="block mb-7 text-xl font-normal"></span>
@@ -64,9 +54,9 @@ const About = () => {
         </WrapperContainer>
         <ImageCard
           extraClassName="rounded-none h-[500px]"
-          bgImage="/assets/images/image1.webp"
+          bgImage="/assets/images/contactOverlayImage.webp"
           bgGradient="linear-gradient(to bottom, rgba(0,16,59,0.5), rgba(39,65,133,0.5))"
-          text="قيمنا"
+          text={t("about.values_section")}
           textClassName="text-5xl"
         />
       </section>
@@ -76,27 +66,24 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-16">
             <InfoCard
               icon={<TfiThumbUp className="text-6xl scale-x-[-1]" />}
-              title="الشفافية والالتزام"
-              description="نلتزم في مركز دروب المستقبل بتقديم خدمات تدريبية واستشارية واضحة، حيث نبني عالقات ثقة قوية مع عمالئنا و نحرص على أن تكون كل خطوة مع عمالئنا مدعومة بالوضوح والمصداقية"
+              title={t("about.info_cards.transparency_title")}
+              description={t("about.info_cards.transparency_desc")}
             />
             <InfoCard
               icon={<PiCertificateFill className="text-6xl scale-x-[-1]" />}
-              title="الجودة"
-              description="نضع أعلى معايير الجودة في جميع برامجنا التدريبية واالستشارية لمساعدة عمالئنا على التفوق في مجاالتهم.ونقدم تجارب تدريبية
-تواكب تطورات األعمال للوصول لنتائج ترضي المؤسسات واألفراد."
+              title={t("about.info_cards.quality_title")}
+              description={t("about.info_cards.quality_desc")}
             />
 
             <InfoCard
               icon={<HiMiniRectangleGroup className="text-6xl scale-x-[-1]" />}
-              title="أثر قابل للقياس"
-              description="نحرص على أن تكون كل تجربة تدريبية أو استشارية لدينا نقطة تحول حقيقية لعمالئنا. و نعمل على قياس أثر برامجنا من خلال
-تحسين األداء المهني وزيادة الكفاءة في العمل"
+              title={t("about.info_cards.impact_title")}
+              description={t("about.info_cards.impact_desc")}
             />
             <InfoCard
               icon={<FaHandsHelping className="text-6xl scale-x-[-1]" />}
-              title="شراكات فاعلة"
-              description="نؤمن بقوة التعاون والشراكات الفاعلة مع عمالئنا وشركائنا االستراتيجيين. نعمل مًعا لتحقيق أهداف مشتركة ودفع استراتيجيات
-التحول والنمو"
+              title={t("about.info_cards.partnerships_title")}
+              description={t("about.info_cards.partnerships_desc")}
             />
           </div>
         </WrapperContainer>
@@ -119,15 +106,13 @@ const About = () => {
           <WrapperContainer>
             <div className="flex flex-col justify-between h-full">
               <h5 className="text-6xl font-extrabold text-blue-900 mb-6">
-                إنجازاتنا
+                {t("about.achievements_title")}
               </h5>
 
-              {achivementData.map((item, idx) => (
+              {achievementsArray.map((desc, idx) => (
                 <div className="flex items-center mb-4" key={idx}>
                   <div className="flex items-center border-l-4 w-fit bg-gradient-to-r from-[#E4E7F2] to-[#F9FAFF] border-l-[#274185] py-5 text-[#000D30] rounded-l-[5px]">
-                    <span className="ml-5 font-bold md:text-xl">
-                      {item.description}
-                    </span>
+                    <span className="ml-5 font-bold md:text-xl">{desc}</span>
                   </div>
                   <NumberDisplay number={`0${idx + 1}`} />
                 </div>
