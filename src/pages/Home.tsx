@@ -11,8 +11,241 @@ import { useNavigate } from "react-router";
 import { useFetchServices } from "../hooks/service/useFetchService";
 import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
 import { useTranslation } from "react-i18next";
+import CourseCard from "../components/reuse/courseCard/CourseCard";
 
 const Home = () => {
+  const coursesData = [
+    {
+      coursePlace: "Online",
+      Accreditation_number: "1733662",
+      image: "/assets/images/coop1.webp",
+      title: "التدريب على التحليل وعرض البيانات باستخدام Power BI",
+      description: [
+        {
+          day: "اليوم 1",
+          topics: [
+            "مقدمة في تحليل البيانات وPower BI",
+            "مفاهيم تحليل البيانات وأهميته",
+            "التعرف على واجهة Power BI",
+            "استيراد البيانات من مصادر مختلفة",
+          ],
+        },
+        {
+          day: "اليوم 2",
+          topics: [
+            "تنظيف وتحويل البيانات باستخدام Power Query",
+            "أدوات التنظيف والتحويل",
+            "إنشاء الجداول والعلاقات",
+            "التعامل مع البيانات المفقودة والمكررة",
+          ],
+        },
+        {
+          day: "اليوم 3",
+          topics: [
+            "بناء النماذج وإنشاء المقاييس باستخدام DAX",
+            "أساسيات لغة DAX",
+            "إنشاء المقاييس (Measures) والحسابات (Calculated Columns)",
+            "استخدام الجداول الزمنية",
+          ],
+        },
+        {
+          day: "اليوم 4",
+          topics: [
+            "تصميم التقارير ولوحات المعلومات",
+            "عناصر التصميم الفعّال",
+            "استخدام المرشحات والتفاعلية",
+            "تخصيص التصاميم حسب الجمهور المستهدف",
+          ],
+        },
+        {
+          day: "اليوم 5",
+          topics: [
+            "النشر والمشاركة والتحسين",
+            "مشاركة التقارير عبر Power BI Service",
+            "إعداد التحديث التلقائي للبيانات",
+            "مراجعة مشروع تطبيقي شامل",
+          ],
+        },
+      ],
+      price: "1,199",
+      oldPrice: "1,699",
+      duration: "5 أيام",
+      level: "30 ساعة",
+    },
+    {
+      coursePlace: "Online",
+      Accreditation_number: "17339474",
+      image: "/assets/images/coop1.webp",
+      title:
+        "التدريب على تطبيقات الذكاء الاصطناعي في الإدارة المكتبية والسكرتارية التنفيذية",
+      description: [
+        {
+          day: "اليوم 1",
+          topics: [
+            "مقدمة في الذكاء الاصطناعي والإدارة المكتبية",
+            "مفاهيم الذكاء الاصطناعي",
+            "التحول الرقمي في السكرتارية",
+            "أدوات الذكاء الاصطناعي الشائعة",
+          ],
+        },
+        {
+          day: "اليوم 2",
+          topics: [
+            "تطبيقات الذكاء الاصطناعي في تنظيم المهام",
+            "استخدام أدوات مثل Microsoft Copilot وChatGPT",
+            "جدولة الاجتماعات وإدارة الوقت",
+            "أتمتة الردود والمراسلات",
+          ],
+        },
+        {
+          day: "اليوم 3",
+          topics: [
+            "إدارة الوثائق والمعلومات باستخدام الذكاء الاصطناعي",
+            "تصنيف وأرشفة الوثائق",
+            "البحث الذكي واسترجاع المعلومات",
+            "حماية البيانات والخصوصية",
+          ],
+        },
+        {
+          day: "اليوم 4",
+          topics: [
+            "دعم اتخاذ القرار والتقارير الذكية",
+            "تحليل البيانات المكتبية",
+            "إنشاء تقارير تلقائية",
+            "أدوات التنبؤ والتوصية",
+          ],
+        },
+        {
+          day: "اليوم 5",
+          topics: [
+            "مشروع تطبيقي وتقييم الأداء",
+            "تنفيذ سيناريو عملي باستخدام أدوات AI",
+            "تقييم الأداء والتحسين",
+            "مناقشة التحديات المستقبلية",
+          ],
+        },
+      ],
+      price: "1,199",
+      oldPrice: "1,699",
+      duration: "5 أيام",
+      level: "30 ساعة",
+    },
+    {
+      coursePlace: "Online",
+      Accreditation_number: "17336343",
+      image: "/assets/images/coop1.webp",
+      title: "التدريب على التسويق الرقمي Digital Marketing",
+      description: [
+        {
+          day: "اليوم 1",
+          topics: [
+            "مقدمة في التسويق الرقمي",
+            "مفاهيم واستراتيجيات التسويق الإلكتروني",
+            "التعرف على القنوات الرقمية",
+            "تحديد الجمهور المستهدف",
+          ],
+        },
+        {
+          day: "اليوم 2",
+          topics: [
+            "تحسين محركات البحث (SEO)",
+            "الكلمات المفتاحية وتحليل المنافسين",
+            "إنشاء محتوى متوافق مع SEO",
+            "تحسين تجربة المستخدم في المواقع",
+          ],
+        },
+        {
+          day: "اليوم 3",
+          topics: [
+            "التسويق عبر وسائل التواصل الاجتماعي",
+            "إعلانات فيسبوك وإنستجرام",
+            "بناء العلامة التجارية على المنصات الاجتماعية",
+            "قياس أداء الحملات",
+          ],
+        },
+        {
+          day: "اليوم 4",
+          topics: [
+            "التسويق عبر البريد الإلكتروني والإعلانات الممولة",
+            "تصميم حملات بريدية فعّالة",
+            "إدارة الميزانية الإعلانية",
+            "تحليل النتائج باستخدام Google Analytics",
+          ],
+        },
+        {
+          day: "اليوم 5",
+          topics: [
+            "مشروع تطبيقي في التسويق الرقمي",
+            "تطبيق عملي على إنشاء حملة متكاملة",
+            "تحليل الأداء وتقديم التقارير",
+            "نصائح للاستمرار في تطوير المهارات",
+          ],
+        },
+      ],
+      price: "1,199",
+      oldPrice: "1,699",
+      duration: "5 أيام",
+      level: "30 ساعة",
+    },
+    {
+      coursePlace: "Online",
+      Accreditation_number: "17334351",
+      image: "/assets/images/coop1.webp",
+      title: "التدريب على إدارة المشاريع الإحترافية PMP",
+      description: [
+        {
+          day: "اليوم 1",
+          topics: [
+            "مقدمة في إدارة المشاريع ومجالات المعرفة",
+            "تعريف المشروع ودورة حياته",
+            "نظرة عامة على دليل PMBOK",
+            "أدوار ومسؤوليات مدير المشروع",
+          ],
+        },
+        {
+          day: "اليوم 2",
+          topics: [
+            "بدء وتخطيط المشروع",
+            "إعداد ميثاق المشروع",
+            "تحديد نطاق المشروع",
+            "إعداد خطة إدارة المشروع",
+          ],
+        },
+        {
+          day: "اليوم 3",
+          topics: [
+            "تنفيذ المشروع وإدارته",
+            "إدارة فرق العمل",
+            "التواصل الفعّال",
+            "إدارة الجودة والمشتريات",
+          ],
+        },
+        {
+          day: "اليوم 4",
+          topics: [
+            "مراقبة وضبط المشروع",
+            "تتبع الأداء باستخدام مؤشرات KPI",
+            "إدارة المخاطر والتغييرات",
+            "تقارير الحالة والتقدم",
+          ],
+        },
+        {
+          day: "اليوم 5",
+          topics: [
+            "إغلاق المشروع والاستعداد للاختبار",
+            "خطوات إغلاق المشروع",
+            "مراجعة شاملة للمفاهيم",
+            "نصائح لاجتياز اختبار PMP",
+          ],
+        },
+      ],
+      price: "1,199",
+      oldPrice: "1,699",
+      duration: "5 أيام",
+      level: "30 ساعة",
+    },
+  ];
+
   const navigate = useNavigate();
   const { data: servicesData } = useFetchServices();
   const { data: staticData } = useFetchStaticPages();
@@ -96,7 +329,28 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="w-full bg-[#F4F7FF] flex flex-col md:flex-row ">
+      <section className="w-full bg-[#F6F9FF] p-3">
+        <div className="w-[98%] m-auto mb-3">
+          <h1 className="text-[#274185] text-4xl font-bold mb-3">
+            احدث الدورات التدريبية
+          </h1>
+          <p className="text-2xl font-normal">نص</p>
+        </div>
+        <div className="w-[98%] m-auto ">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {coursesData.map((course) => (
+              <CourseCard
+                key={course.Accreditation_number}
+                {...course}
+                onRegister={() => alert(`تم التسجيل في ${course.title}`)}
+                onDetails={() => navigate("/course", { state: course })}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-[#F4F7FF] flex flex-col md:flex-row mt-5">
         <div className="bg-[#F4F7FF] pt-14 md:w-[40%]">
           <div className="md:w-[80%] m-auto">
             <RoundedButtton className="mb-10" type="button">
