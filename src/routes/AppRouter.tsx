@@ -3,7 +3,6 @@ import { createBrowserRouter } from "react-router";
 import { lazy } from "react";
 import Layout from "../components/layout/Layout";
 import ErrorPage from "../pages/ErrorPage";
-import Courses from "../pages/Courses";
 
 // Lazy imports
 const Home = lazy(() => import("../pages/Home"));
@@ -12,6 +11,7 @@ const CorporateConsulting = lazy(() => import("../pages/Corporate_consulting"));
 const Services = lazy(() => import("../pages/Services"));
 const Programs = lazy(() => import("../pages/Programs"));
 const ContactUs = lazy(() => import("../pages/ContactUs"));
+const Courses = lazy(() => import("../pages/Courses"));
 
 export const router = createBrowserRouter([
   {
