@@ -22,7 +22,9 @@ export const useCourseRegistrationModal = () => {
 
   // Modal state management
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState<SelectedCourse | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<SelectedCourse | null>(
+    null
+  );
   const [showError, setShowError] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -68,8 +70,8 @@ export const useCourseRegistrationModal = () => {
     mutate({
       course_id: formData.courseId || 0,
       course_name: formData.courseTitle || "",
-      price: selectedCourse?.price || "",
-      price_after_discount: selectedCourse?.oldPrice || "",
+      price: selectedCourse?.oldPrice || "",
+      price_after_discount: selectedCourse?.price || "",
       full_name: formData.name,
       phone_number: formData.phone,
     });
