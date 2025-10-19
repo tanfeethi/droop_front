@@ -1,6 +1,5 @@
 import React from "react";
 import { TbCurrencyRiyal } from "react-icons/tb";
-import DOMPurify from "dompurify";
 
 interface CourseDay {
   day: string;
@@ -8,6 +7,7 @@ interface CourseDay {
 }
 
 interface CourseCardProps {
+  id: number;
   image: string;
   title: string;
   description: CourseDay[];
@@ -22,6 +22,7 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
+  id,
   image,
   title,
   description,
