@@ -22,7 +22,6 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
-  id,
   image,
   title,
   description,
