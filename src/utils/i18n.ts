@@ -19,6 +19,8 @@ import {
   programsEn,
   contactAr,
   contactEn,
+  coursesAr,
+  coursesEn,
 } from "../../public/locals";
 
 const resources = {
@@ -32,6 +34,7 @@ const resources = {
     service: serviceEn,
     programs: programsEn,
     contact: contactEn,
+    courses: coursesEn,
   },
   ar: {
     home: homeAr,
@@ -43,6 +46,7 @@ const resources = {
     service: serviceAr,
     programs: programsAr,
     contact: contactAr,
+    courses: coursesAr,
   },
 } as const;
 

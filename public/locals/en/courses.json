@@ -1,0 +1,11 @@
+{
+  "price_label": "Course Price",
+  "discount": "Discount",
+  "register_now": "Register Now",
+  "duration_label": "Duration (Days)",
+  "training_hours": "Training Hours",
+  "location": "Location",
+  "accreditation_number": "Accreditation Number",
+  "course_content": "Course Content",
+  "success_message": "You have successfully registered for the course!"
+}

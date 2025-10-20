@@ -16,3 +16,5 @@ export { default as programsAr } from "./ar/programs.json";
 export { default as programsEn } from "./en/programs.json";
 export { default as contactAr } from "./ar/contact.json";
 export { default as contactEn } from "./en/contact.json";
+export { default as coursesEn } from "./en/courses.json";
+export { default as coursesAr } from "./ar/courses.json";

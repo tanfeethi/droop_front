@@ -1,0 +1,11 @@
+{
+  "price_label": "سعر الدورة التدريبية",
+  "discount": "خصم",
+  "register_now": "سجل الآن",
+  "duration_label": "المدة بالأيام",
+  "training_hours": "عدد الساعات التدريبية",
+  "location": "المكان",
+  "accreditation_number": "رقم الاعتماد",
+  "course_content": "محتوى الدورة التدريبية",
+  "success_message": "تم التسجيل في الدورة بنجاح!"
+}
