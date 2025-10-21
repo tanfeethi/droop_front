@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { TbCurrencyRiyal } from "react-icons/tb";
 
 interface CourseDay {
@@ -34,6 +35,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   onRegister,
   onDetails,
 }) => {
+  const { t } = useTranslation("courses");
   return (
     <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex flex-col  justify-between h-full">
@@ -45,7 +47,9 @@ const CourseCard: React.FC<CourseCardProps> = ({
             alt={title}
           />
           <div className="absolute top-3 right-3 bg-white p-2 rounded-full">
-            <span className="font-bold text-sm">رقم الاعتماد : </span>
+            <span className="font-bold text-sm">
+              {t("accreditation_number")} :{" "}
+            </span>
             <span>{Accreditation_number}</span>
           </div>
 
@@ -97,13 +101,13 @@ const CourseCard: React.FC<CourseCardProps> = ({
             onClick={onRegister}
             className="p-3 bg-[#274185] rounded-lg text-white font-bold cursor-pointer hover:bg-[#1f356b] transition"
           >
-            التسجيل
+            {t("register")}
           </button>
           <button
             onClick={onDetails}
             className="p-3 border border-[#274185] rounded-lg text-[#274185] font-bold cursor-pointer hover:bg-[#f3f4f6] transition"
           >
-            مزيد من التفاصيل
+            {t("moreDetails")}
           </button>
         </div>
       </div>

@@ -3,7 +3,6 @@ import CourseRegistrationModal from "../components/once/CourseRegistrationModal"
 import { useFetchServices } from "../hooks/service/useFetchService";
 import { useFetchStaticPages } from "../hooks/staticPages/useFetchStaticPages";
 import { useCourseRegistrationModal } from "../hooks/useCourseRegistrationModal";
-import { coursesData } from "../data/coursesData";
 import AboutSection from "../components/sections/AboutSection";
 import ServicesSection from "../components/sections/ServicesSection";
 import ProgramsSection from "../components/sections/ProgramsSection";
@@ -37,7 +36,7 @@ const Home = () => {
 
       <ProgramsSection />
 
-      <CoursesSection coursesData={coursesData} onRegister={handleOpenModal} />
+      <CoursesSection onRegister={handleOpenModal} />
 
       <ContactSection />
 

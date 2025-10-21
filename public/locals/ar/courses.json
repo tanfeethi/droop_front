@@ -7,5 +7,7 @@
   "location": "المكان",
   "accreditation_number": "رقم الاعتماد",
   "course_content": "محتوى الدورة التدريبية",
-  "success_message": "تم التسجيل في الدورة بنجاح!"
+  "success_message": "تم التسجيل في الدورة بنجاح!",
+  "register": "سجل الآن",
+  "moreDetails": "المزيد من التفاصيل"
 }

@@ -7,5 +7,7 @@
   "location": "Location",
   "accreditation_number": "Accreditation Number",
   "course_content": "Course Content",
-  "success_message": "You have successfully registered for the course!"
+  "success_message": "You have successfully registered for the course!",
+  "register": "Register",
+  "moreDetails": "More Details"
 }

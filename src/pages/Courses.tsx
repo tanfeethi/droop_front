@@ -6,6 +6,7 @@ import { BiAward, BiMapPin, BiTrendingUp } from "react-icons/bi";
 import CourseRegistrationModal from "../components/once/CourseRegistrationModal";
 import { useCourseRegistrationModal } from "../hooks/useCourseRegistrationModal";
 import { useTranslation } from "react-i18next";
+import { getCoursesData } from "../data/coursesData";
 
 export interface ICourse {
   id: number;
@@ -21,9 +22,13 @@ export interface ICourse {
 }
 
 const Courses = () => {
-  const { t } = useTranslation("courses");
+  const { t, i18n } = useTranslation("courses");
   const location = useLocation();
-  const courseData = location.state as ICourse;
+  const courseId = location.state?.id;
+  
+  // Get courses data based on current language and find the specific course
+  const coursesData = getCoursesData(i18n.language as "ar" | "en");
+  const courseData = coursesData.find(course => course.id === courseId) || location.state as ICourse;
 
   const {
     isModalOpen,
